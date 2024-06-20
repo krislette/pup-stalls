@@ -39,17 +39,17 @@ PUPStols uses a number of open source projects to work properly:
 ## Folder Structure
 
     .
-    ├── client                # Client-side folder
-    │├──── node_modules        # React Packages
-    │├──── public              # Auto-generated react files
-    │└──── src                 # Source files
-    ├── server                # Server-side folder
-    │├──── config              # Database connection
-    │├──── controllers         # Controllers 
-    │├──── middlewares         # Middlewares
-    │├──── models              # Models
-    │├──── node_modules        # Node Packages
-    │└──── routes              # Routes
+    ├── client                  # Client-side folder
+    │ ├──── node_modules        # React Packages
+    │ ├──── public              # Auto-generated react files
+    │ └──── src                 # Source files
+    ├── server                  # Server-side folder
+    │ ├──── config              # Database connection
+    │ ├──── controllers         # Controllers 
+    │ ├──── middlewares         # Middlewares
+    │ ├──── models              # Models
+    │ ├──── node_modules        # Node Packages
+    │ └──── routes              # Routes
     └── README.md
 
 ## Server
