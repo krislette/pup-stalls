@@ -11,7 +11,6 @@ const createOwner = async (ownerData) => {
     const values = [strOwnerID, strOwnerName, strLandlineNumber, strMobileNumber, strEmailAddress, datBirth, strGender, strPassword];
     const insertResult = await query(sql, values);
 
-    // Return the insert result
     return insertResult;
 };
 
@@ -45,12 +44,6 @@ const deleteOwner = (ownerID) => {
     return query(sql, [ownerID]);
 };
 
-// ! This bitch aint working
-const getCount = () => {
-    const sql = "SELECT COUNT(strOwnerID) AS ownerCount FROM tblOwner";
-    return query(sql);
-};
-
 const getByEmail = (email, callback) => {
     const sql = "SELECT * FROM tblOwner WHERE strEmailAddress = ?";
     query(sql, [email], callback);
@@ -62,6 +55,5 @@ module.exports = {
     getOwnerByID, 
     updateOwner, 
     deleteOwner, 
-    getCount, 
     getByEmail
 };

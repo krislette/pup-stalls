@@ -85,23 +85,6 @@ const deleteOwner = async (req, res) => {
     }
 };
 
-// ! This bitch aint working
-const getCount = async (req, res) => {
-    try {
-        const result = await Owner.getCount();
-        console.log("Database query result:", result);
-
-        if (result.length === 0) {
-            return res.status(404).json({ message: "Owner not found" });
-        }
-
-        res.json({ status: "Success", count: result[0].ownerCount });
-    } catch (error) {
-        console.error("Error fetching count:", error);
-        res.status(500).json({ error: "Error fetching count from database" });
-    }
-};
-
 const loginOwner = (req, res) => {
     const { strEmailAddress, strPassword } = req.body;
 
@@ -138,6 +121,5 @@ module.exports = {
     getOwnerByID, 
     updateOwner, 
     deleteOwner, 
-    getCount, 
     loginOwner
 };

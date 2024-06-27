@@ -6,7 +6,6 @@ const {
     getOwnerByID, 
     updateOwner, 
     deleteOwner, 
-    getCount, 
     loginOwner
 } = require('../controllers/ownerController');
 
@@ -25,11 +24,7 @@ router.put("/update/:strOwnerID", updateOwner);
 // DELETE /owners/delete/:strOwnerID - Delete owner by ID
 router.delete("/delete/:strOwnerID", deleteOwner);
 
-// ! This bitch aint working
-// GET /owners/count - Get count of owners
-router.get("/count", getCount);
-
-// POST /owners/login - Register a new owner
+// POST /owners/login - Log in owner
 router.post("/login", loginOwner);
 
 module.exports = router;
