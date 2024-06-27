@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const { requestLogger } = require("../middlewares/requestLogger");
 const { 
     createOwner, 
     getOwners, 
@@ -8,6 +9,8 @@ const {
     deleteOwner, 
     loginOwner
 } = require('../controllers/ownerController');
+
+router.use(requestLogger);
 
 // GET /owners - Get all owners
 router.get('/', getOwners);
