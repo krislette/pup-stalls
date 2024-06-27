@@ -1,19 +1,22 @@
 require("dotenv").config(); // For environment variables
 const express = require("express");
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
 const ownerRoute = require("./routes/ownerRoute");
+const cors = require("cors");
 
 const app = express();
 const port = 3001;
 
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
+app.use(express.json());
+app.use(cors());
 
 // connectDb();
 
 // Routes
-app.get('/', (req, res) => {
-    res.send("Hello World!");
-});
+// app.get('/', (req, res) => {
+//     res.send("Hello World!");
+// });
 
 // app.use("/create", ownerRoute);
 
