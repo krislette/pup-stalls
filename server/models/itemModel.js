@@ -14,9 +14,14 @@ const createItem = async (itemData) => {
     return insertResult;
 };
 
-const getItems = () => {
-    const sql = "SELECT * FROM tblItem";
-    return query(sql);
+const getItems = (ownerID) => {
+    const sql = `
+        SELECT tblItem.*
+        FROM tblItem
+        JOIN tblStall ON tblItem.strStallID = tblStall.strStallID
+        WHERE tblStall.strOwnerID = ?;
+    `;
+    return query(sql, [ownerID]);
 };
 
 const getItemByID = (itemID) => {

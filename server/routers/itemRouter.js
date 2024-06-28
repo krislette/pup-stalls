@@ -13,7 +13,7 @@ const {
 router.use(requestLogger);
 
 // GET /items - Get all items
-router.get('/', getItems);
+router.get('/:strOwnerID', getItems);
 
 // POST /items/create - Create a new item
 router.post("/create", createItem);

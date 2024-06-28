@@ -19,8 +19,13 @@ const createItem = async (req, res) => {
 
 const getItems = async (req, res) => {
     try {
-        const result = await Item.getItems();
-        res.json({ status: "Success", items: result });
+        const ownerID = req.params.strOwnerID;
+        console.log("Fetching items for owner ID:", ownerID); // Log ownerID
+
+        const items = await Item.getItems(ownerID);
+        console.log("Items from database:", items); // Log items
+
+        res.json({ status: "Success", result: items });
     } catch (error) {
         console.error("Error fetching items:", error);
         res.status(500).json({ error: "Error fetching items from database" });
@@ -70,6 +75,7 @@ const deleteItem = async (req, res) => {
         res.status(500).json({ error: "Error deleting item in database" });
     }
 };
+
 const getCount = async (req, res) => {
     try {
         const ownerID = req.params.strOwnerID;
@@ -88,7 +94,6 @@ const getCount = async (req, res) => {
         res.status(500).json({ error: "Error fetching item counts by owner from database" });
     }
 };
-
 
 module.exports = { 
     createItem, 

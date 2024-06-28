@@ -14,9 +14,12 @@ const Home = () => {
     //       setAdminCount(res.data[0].admin);
     //   }).catch(error => console.log(error));
 
-    Axios.get(`http://localhost:3001/items/count/${ownerID}`)
+    // ! Edit the code to make count 0 if db has no count
+    Axios
+      .get(`http://localhost:3001/items/count/${ownerID}`)
       .then(res => {
-          setItemCount(res.data.count);
+        const count = res.data.count || 0; // Use 0 if count is undefined or null
+        setItemCount(count);
       }).catch(error => console.log(error));
 
     // Axios.get('http://localhost:3001/salary')
