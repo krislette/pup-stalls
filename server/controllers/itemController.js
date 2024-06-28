@@ -70,19 +70,25 @@ const deleteItem = async (req, res) => {
         res.status(500).json({ error: "Error deleting item in database" });
     }
 };
-
 const getCount = async (req, res) => {
     try {
-        const stallID = req.params.strStallID;
-        console.log("Fetching count for stall ID:", stallID);
-        const result = await Item.getCount(stallID);
-        console.log("Result from database:", result);
-        res.json({ status: "Success", count: result[0].count });
+        const ownerID = req.params.strOwnerID;
+        console.log("Fetching item counts for owner ID:", ownerID); // Log ownerID
+
+        const results = await Item.getCountByOwner(ownerID);
+        console.log("Results from database:", results); // Log results
+
+        if (results.length === 0) {
+            console.warn("No items found for the given owner ID:", ownerID); // Log warning if no items found
+        }
+
+        res.json({ status: "Success", count: results[0].itemCount });
     } catch (error) {
-        console.error("Error fetching item count by stall ID:", error);
-        res.status(500).json({ error: "Error fetching item count by stall ID from database" });
+        console.error("Error fetching item counts by owner:", error);
+        res.status(500).json({ error: "Error fetching item counts by owner from database" });
     }
 };
+
 
 module.exports = { 
     createItem, 

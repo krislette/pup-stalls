@@ -28,6 +28,6 @@ router.put("/update/:strItemID", updateItem);
 router.delete("/delete/:strItemID", deleteItem);
 
 // GET /items/count/:strStallID - Get count of items
-router.get("/count/:strStallID", getCount);
+router.get("/count/:strOwnerID", getCount);
 
 module.exports = router;

@@ -36,9 +36,16 @@ const deleteItem = (itemID) => {
     return query(sql, [itemID]);
 };
 
-const getCount = (stallID) => {
-    const sql = "SELECT COUNT(strItemID) AS count FROM tblItem WHERE strStallID = ?";
-    return query(sql, [stallID]);
+const getCountByOwner = (ownerID) => {
+    const sql = `
+        SELECT tblStall.strStallID, COUNT(tblItem.strItemID) AS itemCount
+        FROM tblStall
+        LEFT JOIN tblItem ON tblStall.strStallID = tblItem.strStallID
+        WHERE tblStall.strOwnerID = ?
+        GROUP BY tblStall.strStallID;
+    `;
+    
+    return query(sql, [ownerID]);
 };
 
 module.exports = { 
@@ -47,5 +54,5 @@ module.exports = {
     getItemByID, 
     updateItem, 
     deleteItem, 
-    getCount
+    getCountByOwner
 };
