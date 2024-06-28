@@ -1,4 +1,4 @@
-const Item = require('../models/itemModel');
+const Item = require("../models/itemModel");
 
 const createItem = async (req, res) => {
     try {
@@ -71,10 +71,24 @@ const deleteItem = async (req, res) => {
     }
 };
 
+const getCount = async (req, res) => {
+    try {
+        const stallID = req.params.strStallID;
+        console.log("Fetching count for stall ID:", stallID);
+        const result = await Item.getCount(stallID);
+        console.log("Result from database:", result);
+        res.json({ status: "Success", count: result[0].count });
+    } catch (error) {
+        console.error("Error fetching item count by stall ID:", error);
+        res.status(500).json({ error: "Error fetching item count by stall ID from database" });
+    }
+};
+
 module.exports = { 
     createItem, 
     getItems, 
     getItemByID, 
     updateItem, 
-    deleteItem
+    deleteItem, 
+    getCount
 };

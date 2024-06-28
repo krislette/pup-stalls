@@ -36,10 +36,16 @@ const deleteItem = (itemID) => {
     return query(sql, [itemID]);
 };
 
+const getCount = (stallID) => {
+    const sql = "SELECT COUNT(strItemID) AS count FROM tblItem WHERE strStallID = ?";
+    return query(sql, [stallID]);
+};
+
 module.exports = { 
     createItem, 
     getItems, 
     getItemByID, 
     updateItem, 
-    deleteItem
+    deleteItem, 
+    getCount
 };

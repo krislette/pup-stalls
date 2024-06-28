@@ -6,7 +6,8 @@ const {
     getItems, 
     getItemByID, 
     updateItem, 
-    deleteItem
+    deleteItem,
+    getCount
 } = require("../controllers/itemController");
 
 router.use(requestLogger);
@@ -25,5 +26,8 @@ router.put("/update/:strItemID", updateItem);
 
 // DELETE /items/delete/:strItemID - Delete item by ID
 router.delete("/delete/:strItemID", deleteItem);
+
+// GET /items/count/:strStallID - Get count of items
+router.get("/count/:strStallID", getCount);
 
 module.exports = router;

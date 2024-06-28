@@ -1,25 +1,28 @@
 import React, { useState } from "react";
-import axios from "axios";
+import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 import loginimg from "../assets/signup.png"; // Update the path to your login image
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [ownerEmail, setEmail] = useState("");
+  const [ownerPassword, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const login = (e) => {
     e.preventDefault();
-    axios
+    Axios
       .post("http://localhost:3001/owners/login", {
-        strEmailAddress: email,
-        strPassword: password,
+        strEmailAddress: ownerEmail,
+        strPassword: ownerPassword,
       })
       .then((res) => {
         console.log(res);
         if (res.data.status === "Success") {
-          navigate("/");
+          // Store the owner ID and token in local storage
+          localStorage.setItem("ownerID", res.data.ownerID);
+          localStorage.setItem("token", res.data.token);
+          navigate('/');
         } else {
           setError(res.data.message);
         }
@@ -52,7 +55,7 @@ const Login = () => {
                 />
                 <label className="form-label">Email address</label>
               </div>
-              <div className="form-outline mb-3">
+              <div className="form-outline mb3">
                 <input
                   type="password"
                   className="form-control form-control-lg"

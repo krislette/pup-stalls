@@ -3,15 +3,65 @@ const util = require("util");
 
 const query = util.promisify(dbConnection.query).bind(dbConnection);
 
-const createOwner = async (ownerData) => {
-    const { strOwnerID, strOwnerName, strLandlineNumber, strMobileNumber, strEmailAddress, datBirth, strGender, strPassword } = ownerData;
+const createOwner = async (ownerData, stallData) => {
+    const {
+        strOwnerID,
+        strOwnerName,
+        strLandlineNumber,
+        strMobileNumber,
+        strEmailAddress,
+        datBirth,
+        strGender,
+        strPassword
+    } = ownerData;
 
-    // SQL query to insert the owner data
-    const sql = "INSERT INTO tblOwner (strOwnerID, strOwnerName, strLandlineNumber, strMobileNumber, strEmailAddress, datBirth, strGender, strPassword) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    const values = [strOwnerID, strOwnerName, strLandlineNumber, strMobileNumber, strEmailAddress, datBirth, strGender, strPassword];
-    const insertResult = await query(sql, values);
+    const {
+        strStallID,
+        strStallName,
+        strStallType
+    } = stallData;
 
-    return insertResult;
+    try {
+        // Begin transaction
+        await dbConnection.promise().beginTransaction();
+
+        // Insert into tblOwner
+        const insertOwnerSql = "INSERT INTO tblOwner (strOwnerID, strOwnerName, strLandlineNumber, strMobileNumber, strEmailAddress, datBirth, strGender, strPassword) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        const ownerValues = [
+            strOwnerID,
+            strOwnerName,
+            strLandlineNumber,
+            strMobileNumber,
+            strEmailAddress,
+            datBirth,
+            strGender,
+            strPassword
+        ];
+        const [ownerResult] = await dbConnection.promise().query(insertOwnerSql, ownerValues);
+
+        // Insert into tblStall
+        const insertStallSql = "INSERT INTO tblStall (strOwnerID, strStallID, strStallName, strStallType) VALUES (?, ?, ?, ?)";
+        const stallValues = [
+            strOwnerID,
+            strStallID,
+            strStallName,
+            strStallType
+        ];
+        const [stallResult] = await dbConnection.promise().query(insertStallSql, stallValues);
+
+        // Commit transaction if all queries succeed
+        await dbConnection.promise().commit();
+
+        return {
+            ownerResult,
+            stallResult
+        };
+    } catch (error) {
+        // Rollback transaction if any error occurs
+        await dbConnection.promise().rollback();
+        console.error("Error creating owner and stall:", error);
+        throw error;
+    }
 };
 
 const getOwners = () => {
