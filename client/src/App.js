@@ -8,6 +8,7 @@ import Home from "./components/Home";
 
 import Items from "./components/Items";
 import AddItem from "./components/AddItem";
+import EditItem from "./components/EditItem";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path='' element={<Home />}></Route>
             <Route path="/items" element={<Items />}></Route>
             <Route path="/add-item" element={<AddItem />}></Route>
+            <Route path="/items/edit/:strItemID" element={<EditItem />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

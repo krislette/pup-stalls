@@ -48,7 +48,7 @@ function Items() {
                   <td>{item.decPurchasePrice}</td>
                   <td>{item.strSupplierID}</td>
                   <td>
-                    <Link to={`items/${item.strItemID}`} className="btn btn-success btn-sm me-2">Edit</Link>
+                    <Link to={`edit/${item.strItemID}`} className="btn btn-success btn-sm me-2">Edit</Link>
                     <button className="btn btn-sm btn-danger">Delete</button>
                   </td>
                 </tr>
