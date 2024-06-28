@@ -25,7 +25,7 @@ function Items() {
       <div className="d-flex justify-content-center mt-2">
         <h3>Item List</h3>
       </div>
-      <Link to="/add-item" className="btn btn-success">Add Item</Link>
+      <Link to="/add-item" className="btn btn-dark">Add Item</Link>
       <div className="mt-3">
         <table className="table table-hover table-stripped">
           <thead>
@@ -48,7 +48,7 @@ function Items() {
                   <td>{item.decPurchasePrice}</td>
                   <td>{item.strSupplierID}</td>
                   <td>
-                    <Link to={`items/${item.strItemID}`} className="btn btn-primary btn-sm me-2">Edit</Link>
+                    <Link to={`items/${item.strItemID}`} className="btn btn-success btn-sm me-2">Edit</Link>
                     <button className="btn btn-sm btn-danger">Delete</button>
                   </td>
                 </tr>
