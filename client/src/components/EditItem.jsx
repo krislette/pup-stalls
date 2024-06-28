@@ -39,22 +39,25 @@ function EditItem() {
 
   const updateItem = (e) => {
     e.preventDefault();
-    Axios.put(`http://localhost:3001/items/update/${strItemID}`, {
-      strStallID: itemStallID, // Ensure strStallID is included
-      strItemName: itemName,
-      strItemType: itemType,
-      decPurchasePrice: itemPurchasePrice,
-      strSupplierID: itemSupplierID
-    }).then(response => {
-      console.log(response);
-      if (response.data.status === "Success") {
-        setUpdateStatus(response.data.message);
-        navigate("/items"); // Navigate to the items page on success
-        alert("Item updated successfully");
-      } else {
-        setUpdateStatus("Failed to update item");
-      }
-    }).catch(error => console.log(error));
+    Axios
+      .put(`http://localhost:3001/items/update/${strItemID}`, {
+        strStallID: itemStallID,
+        strItemName: itemName,
+        strItemType: itemType,
+        decPurchasePrice: itemPurchasePrice,
+        strSupplierID: itemSupplierID
+      })
+      .then(response => {
+        console.log(response);
+        if (response.data.status === "Success") {
+          setUpdateStatus(response.data.message);
+          navigate("/items"); // Navigate to the items page on success
+          alert("Item updated successfully");
+        } else {
+          setUpdateStatus("Failed to update item");
+        }
+      })
+      .catch(error => console.log(error));
   };
 
   return (
