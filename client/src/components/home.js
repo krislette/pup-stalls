@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 
-const Home = () => {
+function Home() {
   const [adminCount, setAdminCount] = useState();
   const [itemCount, setItemCount] = useState();
   const [salary, setSalary] = useState();

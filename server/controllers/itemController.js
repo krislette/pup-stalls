@@ -3,11 +3,19 @@ const Item = require("../models/itemModel");
 const createItem = async (req, res) => {
     try {
         const itemData = req.body;
-
+        
+        // Fetch the last item ID from the database
+        const lastItemIDResult = await Item.getLastItemID();
+        const lastItemID = lastItemIDResult[0]?.strItemID || "ITEM-000";
+        
+        // Generate the next item ID
+        const nextItemID = `ITEM-${String(parseInt(lastItemID.split('-')[1]) + 1).padStart(3, '0')}`;
+        itemData.strItemID = nextItemID;
+    
         // Call the model function to create item
         const insertResult = await Item.createItem(itemData);
-
-        // Check if insertResult is valid (optional)
+    
+        // Check if insertResult is valid
         if (insertResult && insertResult.affectedRows > 0) {
             return res.json({ status: "Success", message: "Item created successfully" });
         }
@@ -17,13 +25,53 @@ const createItem = async (req, res) => {
     }
 };
 
+const getNextItemID = async (req, res) => {
+    try {
+        const lastItemIDResult = await Item.getLastItemID();
+        
+        if (lastItemIDResult.length === 0) {
+            console.log("No items found in the database");
+            res.json({ status: "Success", result: "ITEM-001" });
+            return;
+        }
+        
+        const lastItemID = lastItemIDResult[0].strItemID || "ITEM-000";
+        const nextItemID = `ITEM-${String(parseInt(lastItemID.split('-')[1]) + 1).padStart(3, '0')}`;
+
+        console.log("Last Item ID:", lastItemID);
+        console.log("Next Item ID:", nextItemID);
+
+        res.json({ status: "Success", result: nextItemID });
+    } catch (error) {
+        console.error("Error fetching next item ID:", error);
+        res.status(500).json({ error: "Failed to fetch next item ID" });
+    }
+};
+  
+const getStallIDByOwner = async (req, res) => {
+    try {
+        const ownerID = req.params.strOwnerID;
+        console.log("Fetching stall ID for owner ID:", ownerID); // Add logging
+        const result = await Item.getStallIDByOwner(ownerID);
+        console.log("Result from database:", result); // Add logging
+        if (result.length > 0) {
+            res.json({ status: "Success", stallID: result[0].strStallID });
+        } else {
+            res.json({ status: "Error", message: "No stall found for the given owner ID" });
+        }
+    } catch (error) {
+        console.error("Error fetching stall ID by owner:", error);
+        res.status(500).json({ error: "Failed to fetch stall ID by owner" });
+    }
+};
+
 const getItems = async (req, res) => {
     try {
         const ownerID = req.params.strOwnerID;
-        console.log("Fetching items for owner ID:", ownerID); // Log ownerID
+        console.log("Fetching items for owner ID:", ownerID)
 
         const items = await Item.getItems(ownerID);
-        console.log("Items from database:", items); // Log items
+        console.log("Items from database:", items);
 
         res.json({ status: "Success", result: items });
     } catch (error) {
@@ -97,6 +145,8 @@ const getCount = async (req, res) => {
 
 module.exports = { 
     createItem, 
+    getNextItemID,
+    getStallIDByOwner,
     getItems, 
     getItemByID, 
     updateItem, 

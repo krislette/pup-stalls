@@ -2,7 +2,7 @@ import signupLogo from "../assets/signup.png";
 import { useState } from "react";
 import Axios from "axios";
 
-const SignUp = () => {
+function SignUp() {
   const [ownerID, setOwnerID] = useState("");
   const [ownerName, setOwnerName] = useState("");
   const [ownerLandline, setOwnerLandline] = useState("");

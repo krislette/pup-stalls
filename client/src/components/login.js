@@ -3,7 +3,7 @@ import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 import loginimg from "../assets/signup.png"; // Update the path to your login image
 
-const Login = () => {
+function LogIn() {
   const [ownerEmail, setEmail] = useState("");
   const [ownerPassword, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -92,4 +92,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LogIn;

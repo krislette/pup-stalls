@@ -14,6 +14,18 @@ const createItem = async (itemData) => {
     return insertResult;
 };
 
+const getLastItemID = async () => {
+    const sql = "SELECT strItemID FROM tblItem ORDER BY strItemID DESC LIMIT 1";
+    const result = await query(sql);
+    console.log("Last Item ID Result:", result); // Add this log
+    return result;
+};
+  
+const getStallIDByOwner = async (ownerID) => {
+    const sql = "SELECT strStallID FROM tblStall WHERE strOwnerID = ?";
+    return query(sql, [ownerID]);
+};
+
 const getItems = (ownerID) => {
     const sql = `
         SELECT tblItem.*
@@ -55,6 +67,8 @@ const getCountByOwner = (ownerID) => {
 
 module.exports = { 
     createItem, 
+    getLastItemID,
+    getStallIDByOwner,
     getItems, 
     getItemByID, 
     updateItem, 
