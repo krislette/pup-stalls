@@ -5,8 +5,11 @@ function Dashboard() {
   const navigate = useNavigate();
 
   const signOut = () => {
-    localStorage.removeItem("Token");
-    navigate("/login");
+    const confirmSignOut = window.confirm("Are you sure you want to sign out?");
+    if (confirmSignOut) {
+      localStorage.removeItem("Token");
+      navigate("/login");
+    }
   };
 
   return (
@@ -91,16 +94,16 @@ function Dashboard() {
                   <span className="ms-1 d-none d-sm-inline">Profile</span>
                 </Link>
               </li>
-              <li>
-                <button
-                  type="button"
-                  className="btn btn-outline-light"
-                  onClick={signOut}
-                >
-                  Sign Out
-                </button>
-              </li>
             </ul>
+            <div className="mb-4"> {/* Added margin-top here */}
+              <button
+                type="button"
+                className="btn btn-outline-light"
+                onClick={signOut}
+              >
+                Sign Out
+              </button>
+            </div>
           </div>
         </div>
         <div className="col p-0 m-0">
