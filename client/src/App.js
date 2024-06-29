@@ -16,6 +16,7 @@ import EditSupplier from "./components/suppliers/EditSupplier";
 
 import Menu from "./components/menu/Menu";
 import AddMenuItem from "./components/menu/AddMenuItem";
+import EditMenuItem from "./components/menu/EditMenuItem";
 
 function App() {
   return (
@@ -36,7 +37,8 @@ function App() {
             <Route path="/suppliers/edit/:strSupplierID" element={<EditSupplier />}></Route>
 
             <Route path="/menu" element={<Menu />}></Route>
-            <Route path="add-menu-item" element={<AddMenuItem />}></Route>
+            <Route path="/add-menu-item" element={<AddMenuItem />}></Route>
+            <Route path="/menu/edit/:strMenuItemID" element={<EditMenuItem />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>
