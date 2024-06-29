@@ -1,4 +1,4 @@
-import signupLogo from "../assets/signup.png";
+import signupLogo from "../../assets/signup.png";
 import { useState } from "react";
 import Axios from "axios";
 

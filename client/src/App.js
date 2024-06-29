@@ -1,14 +1,14 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import SignUp from "./components/SignUp";
-import LogIn from "./components/LogIn";
+import SignUp from "./components/auth/SignUp";
+import LogIn from "./components/auth/LogIn";
 
-import Dashboard from "./components/Dashboard";
-import Home from "./components/Home";
+import Dashboard from "./components/dashboard/Dashboard";
+import Home from "./components/dashboard/Home";
 
-import Items from "./components/Items";
-import AddItem from "./components/AddItem";
-import EditItem from "./components/EditItem";
+import Items from "./components/items/Items";
+import AddItem from "./components/items/AddItem";
+import EditItem from "./components/items/EditItem";
 
 function App() {
   return (

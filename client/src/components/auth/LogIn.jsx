@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
-import loginimg from "../assets/signup.png"; // Update the path to your login image
+import loginimg from "../../assets/signup.png";
 
 function LogIn() {
   const [ownerEmail, setEmail] = useState("");
