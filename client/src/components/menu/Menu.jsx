@@ -20,6 +20,22 @@ function Menu() {
       .catch(error => console.log(error));
   }, []);
 
+  const deleteMenuItem = (strMenuItemID) => {
+    if (window.confirm("Are you sure you want to delete this menu item?")) {
+      Axios.delete(`http://localhost:3001/menu/delete/${strMenuItemID}`)
+        .then(res => {
+          if (res.data.status === "Success") {
+            // Update the state to remove the deleted menu item
+            setData(data.filter(item => item.strMenuItemID !== strMenuItemID));
+            alert("Menu item deleted successfully");
+          } else {
+            alert("Failed to delete menu item");
+          }
+        })
+        .catch(error => console.log(error));
+    }
+  };
+
   return (
     <div className="px-5 py-3">
       <div className="d-flex justify-content-center mt-2">
@@ -48,6 +64,7 @@ function Menu() {
                   <Link to={`edit/${item.strMenuItemID}`} className="btn btn-success btn-sm me-2">Edit</Link>
                   <button
                     className="btn btn-sm btn-danger"
+                    onClick={() => deleteMenuItem(item.strMenuItemID)}
                     >
                     Delete
                   </button>
