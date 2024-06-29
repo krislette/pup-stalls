@@ -14,9 +14,29 @@ const createSupplier = async (supplierData) => {
     return insertResult;
 };
 
-const getSuppliers = () => {
+const getLastSupplierID = async () => {
+    const sql = "SELECT strSupplierID FROM tblSupplier ORDER BY strSupplierID DESC LIMIT 1";
+    const result = await query(sql);
+    return result;
+};
+
+const getSuppliers = async () => {
     const sql = "SELECT * FROM tblSupplier";
     return query(sql);
+};
+
+const getSuppliersByOwner = (ownerID) => {
+    const sql = `
+        SELECT *
+        FROM tblSupplier
+        WHERE strSupplierID IN (
+            SELECT strSupplierID
+            FROM tblItem
+            JOIN tblStall ON tblItem.strStallID = tblStall.strStallID
+            WHERE tblStall.strOwnerID = ?
+        );
+    `;
+    return query(sql, [ownerID]);
 };
 
 const getSupplierByID = (supplierID) => {
@@ -36,10 +56,12 @@ const deleteSupplier = (supplierID) => {
     return query(sql, [supplierID]);
 };
 
-module.exports = { 
-    createSupplier, 
-    getSuppliers, 
-    getSupplierByID, 
-    updateSupplier, 
+module.exports = {
+    createSupplier,
+    getLastSupplierID, 
+    getSuppliers,
+    getSuppliersByOwner,
+    getSupplierByID,
+    updateSupplier,
     deleteSupplier
 };

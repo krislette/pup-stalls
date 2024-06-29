@@ -10,6 +10,8 @@ import Items from "./components/items/Items";
 import AddItem from "./components/items/AddItem";
 import EditItem from "./components/items/EditItem";
 
+import Suppliers from "./components/suppliers/Suppliers";
+
 function App() {
   return (
     <div className="App">
@@ -23,6 +25,8 @@ function App() {
             <Route path="/items" element={<Items />}></Route>
             <Route path="/add-item" element={<AddItem />}></Route>
             <Route path="/items/edit/:strItemID" element={<EditItem />}></Route>
+            
+            <Route path="/suppliers" element={<Suppliers />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

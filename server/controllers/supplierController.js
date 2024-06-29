@@ -1,13 +1,21 @@
-const Supplier = require('../models/supplierModel');
+const Supplier = require("../models/supplierModel");
 
 const createSupplier = async (req, res) => {
     try {
         const supplierData = req.body;
 
+        // Fetch the last supplier ID from the database
+        const lastSupplierIDResult = await Supplier.getLastSupplierID();
+        const lastSupplierID = lastSupplierIDResult[0]?.strSupplierID || "SUP-000";
+
+        // Generate the next supplier ID
+        const nextSupplierID = `SUP-${String(parseInt(lastSupplierID.split('-')[1]) + 1).padStart(3, '0')}`;
+        supplierData.strSupplierID = nextSupplierID;
+
         // Call the model function to create supplier
         const insertResult = await Supplier.createSupplier(supplierData);
 
-        // Check if insertResult is valid (optional)
+        // Check if insertResult is valid
         if (insertResult && insertResult.affectedRows > 0) {
             return res.json({ status: "Success", message: "Supplier created successfully" });
         }
@@ -19,8 +27,23 @@ const createSupplier = async (req, res) => {
 
 const getSuppliers = async (req, res) => {
     try {
-        const result = await Supplier.getSuppliers();
-        res.json({ status: "Success", suppliers: result });
+        const suppliers = await Supplier.getSuppliers();
+        res.json({ status: "Success", result: suppliers });
+    } catch (error) {
+        console.error("Error fetching suppliers:", error);
+        res.status(500).json({ error: "Error fetching suppliers from database" });
+    }
+};
+
+const getSuppliersByOwner = async (req, res) => {
+    try {
+        const ownerID = req.params.strOwnerID;
+        console.log("Fetching suppliers for owner ID:", ownerID);
+
+        const suppliers = await Supplier.getSuppliers(ownerID);
+        console.log("Suppliers from database:", suppliers);
+
+        res.json({ status: "Success", result: suppliers });
     } catch (error) {
         console.error("Error fetching suppliers:", error);
         res.status(500).json({ error: "Error fetching suppliers from database" });
@@ -71,10 +94,11 @@ const deleteSupplier = async (req, res) => {
     }
 };
 
-module.exports = { 
-    createSupplier, 
-    getSuppliers, 
-    getSupplierByID, 
-    updateSupplier, 
+module.exports = {
+    createSupplier,
+    getSuppliers,
+    getSuppliersByOwner,
+    getSupplierByID,
+    updateSupplier,
     deleteSupplier
 };

@@ -33,18 +33,18 @@ function Dashboard() {
               </li>
               <li>
                 <Link
-                  to="/items"
-                  className="nav-link px-0 align-middle text-white"
-                >
-                  <span className="ms-1 d-none d-sm-inline">Items</span>
-                </Link>
-              </li>
-              <li>
-                <Link
                   to="/suppliers"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <span className="ms-1 d-none d-sm-inline">Suppliers</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/items"
+                  className="nav-link px-0 align-middle text-white"
+                >
+                  <span className="ms-1 d-none d-sm-inline">Items</span>
                 </Link>
               </li>
               <li>

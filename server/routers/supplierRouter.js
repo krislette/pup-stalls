@@ -1,18 +1,22 @@
 const express = require("express");
 const router = express.Router();
 const { requestLogger } = require("../middlewares/requestLogger");
-const { 
-    createSupplier, 
-    getSuppliers, 
-    getSupplierByID, 
-    updateSupplier, 
-    deleteSupplier
-} = require('../controllers/supplierController');
+const {
+    createSupplier,
+    getSuppliers,
+    getSuppliersByOwner,
+    getSupplierByID,
+    updateSupplier,
+    deleteSupplier,
+} = require("../controllers/supplierController");
 
 router.use(requestLogger);
 
-// GET /suppliers - Get all suppliers
+// GET /suppliers/
 router.get('/', getSuppliers);
+
+// GET /suppliers/:strOwnerID - Get all suppliers of a specific owner
+router.get("/:strOwnerID", getSuppliersByOwner);
 
 // POST /suppliers/create - Create a new supplier
 router.post("/create", createSupplier);
