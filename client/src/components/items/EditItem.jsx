@@ -15,7 +15,8 @@ function EditItem() {
   useEffect(() => {
     const ownerID = localStorage.getItem("ownerID");
 
-    Axios.get(`http://localhost:3001/items/${strItemID}`)
+    Axios
+      .get(`http://localhost:3001/items/${strItemID}`)
       .then(response => {
         const item = response.data.item;
         setItemName(item.strItemName);
@@ -26,7 +27,8 @@ function EditItem() {
       .catch(error => console.log(error));
 
     // Fetch the stall ID based on owner ID
-    Axios.get(`http://localhost:3001/items/stalls/${ownerID}`)
+    Axios
+      .get(`http://localhost:3001/items/stalls/${ownerID}`)
       .then(response => {
         if (response.data.status === "Success") {
           setItemStallID(response.data.stallID);

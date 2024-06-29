@@ -20,6 +20,7 @@ import EditMenuItem from "./components/menu/EditMenuItem";
 
 import SalesAndTransactions from "./components/transaction/SalesAndTransactions";
 import AddSalesTransactions from "./components/transaction/AddSalesAndTransactions";
+import EditSalesAndTransactions from "./components/transaction/EditSalesAndTransactions";
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
 
             <Route path="/sales-and-transactions" element={<SalesAndTransactions />}></Route>
             <Route path="/add-transaction" element={<AddSalesTransactions />}></Route>
+            <Route path="/sales-and-transactions/edit/:strTransactionID" element={<EditSalesAndTransactions />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>
