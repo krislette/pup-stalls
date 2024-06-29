@@ -32,6 +32,8 @@ import EditEmployee from "./components/employee/EditEmployee";
 
 import RentHistory from "./components/rent/RentHistory";
 
+import Profile from "./components/profile/Profile";
+
 function App() {
   return (
     <div className="App">
@@ -67,6 +69,8 @@ function App() {
             <Route path="/employees/edit/:strEmployeeID" element={<EditEmployee />}></Route>
 
             <Route path="/rents" element={<RentHistory />}></Route>
+
+            <Route path="/profile" element={<Profile />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

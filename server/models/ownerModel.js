@@ -116,11 +116,27 @@ const getByEmail = (email, callback) => {
     query(sql, [email], callback);
 };
 
+const getProfileData = (ownerID) => {
+    const sql = `
+        SELECT 
+            o.strOwnerID, o.strOwnerName, o.strLandlineNumber, o.strMobileNumber, o.strEmailAddress, 
+            o.datBirth, o.strGender,
+            s.strStallID, s.strStallName, s.strStallType,
+            r.strRentID, r.datLeaseStart, r.datLeaseEnd, r.decRentAmount
+        FROM tblOwner o
+        JOIN tblStall s ON o.strOwnerID = s.strOwnerID
+        JOIN tblRent r ON s.strStallID = r.strStallID
+        WHERE o.strOwnerID = ?;
+    `;
+    return query(sql, [ownerID]);
+};
+
 module.exports = { 
     createOwner, 
     getOwners, 
     getOwnerByID, 
     updateOwner, 
     deleteOwner, 
-    getByEmail
+    getByEmail,
+    getProfileData
 };

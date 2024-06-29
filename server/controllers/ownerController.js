@@ -132,11 +132,23 @@ const loginOwner = (req, res) => {
     });
 };
 
+const getProfile = async (req, res) => {
+    try {
+        const ownerID = req.params.strOwnerID; // Adjust this based on your route setup
+        const profileData = await Owner.getProfileData(ownerID);
+        res.json({ status: "Success", data: profileData });
+    } catch (error) {
+        console.error("Error fetching profile data:", error);
+        res.status(500).json({ error: "Error fetching profile data" });
+    }
+};
+
 module.exports = { 
     createOwner, 
     getOwners, 
     getOwnerByID, 
     updateOwner, 
     deleteOwner, 
-    loginOwner
+    loginOwner,
+    getProfile
 };

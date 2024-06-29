@@ -7,7 +7,8 @@ const {
     getOwnerByID, 
     updateOwner, 
     deleteOwner, 
-    loginOwner
+    loginOwner,
+    getProfile
 } = require('../controllers/ownerController');
 
 router.use(requestLogger);
@@ -29,5 +30,8 @@ router.delete("/delete/:strOwnerID", deleteOwner);
 
 // POST /owners/login - Log in owner
 router.post("/login", loginOwner);
+
+// GET /owners/profile - Profile date of the owner
+router.get("/profile/:strOwnerID", getProfile);
 
 module.exports = router;
