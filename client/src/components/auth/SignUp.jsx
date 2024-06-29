@@ -11,9 +11,10 @@ function SignUp() {
   const [ownerBirth, setOwnerBirth] = useState("");
   const [ownerGender, setOwnerGender] = useState("");
   const [ownerPassword, setOwnerPassword] = useState("");
-  const [stallID, setStallID] = useState("");
   const [stallName, setStallName] = useState("");
   const [stallType, setStallType] = useState("");
+  const [leaseStart, setLeaseStart] = useState("");
+  const [leaseEnd, setLeaseEnd] = useState("");
 
   const register = async (e) => {
     e.preventDefault();
@@ -27,11 +28,12 @@ function SignUp() {
         datBirth: ownerBirth,
         strGender: ownerGender,
         strPassword: ownerPassword,
-        strStallID: stallID,
         strStallName: stallName,
         strStallType: stallType,
+        datLeaseStart: leaseStart,
+        datLeaseEnd: leaseEnd,
       });
-      
+
       console.log(response.data);
       if (response.data.status === "Success") {
         alert("Account created successfully!");
@@ -44,9 +46,10 @@ function SignUp() {
         setOwnerBirth("");
         setOwnerGender("");
         setOwnerPassword("");
-        setStallID("");
         setStallName("");
         setStallType("");
+        setLeaseStart("");
+        setLeaseEnd("");
       } else {
         alert("Failed to create account: " + response.data.error);
       }
@@ -86,13 +89,13 @@ function SignUp() {
                   value={ownerName}
                   onChange={(e) => setOwnerName(e.target.value)}
                 />
-                <label className="form-label">Name</label>
+                <label className="form-label">Owner Name</label>
               </div>
               <div className="form-outline mb-4">
                 <input
                   type="text"
                   className="form-control form-control-lg"
-                  placeholder="Enter Your Landline Number (Optional)"
+                  placeholder="Enter Landline Number"
                   value={ownerLandline}
                   onChange={(e) => setOwnerLandline(e.target.value)}
                 />
@@ -102,7 +105,7 @@ function SignUp() {
                 <input
                   type="text"
                   className="form-control form-control-lg"
-                  placeholder="Enter Your Mobile Number"
+                  placeholder="Enter Mobile Number"
                   required
                   value={ownerMobile}
                   onChange={(e) => setOwnerMobile(e.target.value)}
@@ -113,7 +116,7 @@ function SignUp() {
                 <input
                   type="email"
                   className="form-control form-control-lg"
-                  placeholder="Enter Your Email Address"
+                  placeholder="Enter Email Address"
                   required
                   value={ownerEmail}
                   onChange={(e) => setOwnerEmail(e.target.value)}
@@ -142,11 +145,11 @@ function SignUp() {
                 </select>
                 <label className="form-label">Gender</label>
               </div>
-              <div className="form-outline mb-3">
+              <div className="form-outline mb-4">
                 <input
                   type="password"
                   className="form-control form-control-lg"
-                  placeholder="Enter Your Password"
+                  placeholder="Enter Password"
                   required
                   value={ownerPassword}
                   onChange={(e) => setOwnerPassword(e.target.value)}
@@ -154,21 +157,10 @@ function SignUp() {
                 <label className="form-label">Password</label>
               </div>
 
-              {/* Stall fields */}
               <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
                 <p className="lead fw-normal mb-0 me-3">Stall Information</p>
               </div>
-              <div className="form-outline mb-4">
-                <input
-                  type="text"
-                  className="form-control form-control-lg"
-                  placeholder="Enter Stall ID"
-                  required
-                  value={stallID}
-                  onChange={(e) => setStallID(e.target.value)}
-                />
-                <label className="form-label">Stall ID</label>
-              </div>
+              {/* Stall fields */}
               <div className="form-outline mb-4">
                 <input
                   type="text"
@@ -192,13 +184,36 @@ function SignUp() {
                 <label className="form-label">Stall Type</label>
               </div>
 
+              <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+                <p className="lead fw-normal mb-0 me-3">Rent Information</p>
+              </div>
+              {/* Rent fields */}
+              <div className="form-outline mb-4">
+                <input
+                  type="date"
+                  className="form-control form-control-lg"
+                  required
+                  value={leaseStart}
+                  onChange={(e) => setLeaseStart(e.target.value)}
+                />
+                <label className="form-label">Lease Start Date</label>
+              </div>
+              <div className="form-outline mb-4">
+                <input
+                  type="date"
+                  className="form-control form-control-lg"
+                  required
+                  value={leaseEnd}
+                  onChange={(e) => setLeaseEnd(e.target.value)}
+                />
+                <label className="form-label">Lease End Date</label>
+              </div>
+
               {/* Remember me and forgot password */}
               <div className="d-flex justify-content-between align-items-center">
                 <div className="form-check mb-0">
                   <input className="form-check-input me-2" type="checkbox" value="" />
-                  <label className="form-check-label">
-                    Remember me
-                  </label>
+                  <label className="form-check-label">Remember me</label>
                 </div>
                 <a href="#" className="text-body">Forgot password?</a>
               </div>
@@ -219,6 +234,6 @@ function SignUp() {
       </div>
     </div>
   );
-};
+}
 
 export default SignUp;

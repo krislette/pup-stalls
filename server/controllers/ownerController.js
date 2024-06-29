@@ -4,12 +4,15 @@ const Owner = require('../models/ownerModel');
 
 const createOwner = async (req, res) => {
     try {
-        const { strOwnerID, strOwnerName, strLandlineNumber, strMobileNumber, strEmailAddress, datBirth, strGender, strPassword, strStallID, strStallName, strStallType } = req.body;
-
+        const {
+            strOwnerID, strOwnerName, strLandlineNumber, strMobileNumber, strEmailAddress, datBirth, strGender, strPassword,
+            strStallName, strStallType, datLeaseStart, datLeaseEnd
+        } = req.body;
+    
         // Hash the password
         const hashedPassword = await bcrypt.hash(strPassword, 10);
-
-        // Prepare owner and stall data
+    
+        // Prepare owner data
         const ownerData = {
             strOwnerID,
             strOwnerName,
@@ -20,25 +23,22 @@ const createOwner = async (req, res) => {
             strGender,
             strPassword: hashedPassword
         };
-
-        const stallData = {
-            strStallID,
-            strStallName,
-            strStallType
-        };
-
-        // Call the model function to create owner and stall
-        const result = await Owner.createOwner(ownerData, stallData);
-
+    
+        const rentAmount = 15000.00;
+    
+        // Call the model function to create owner, stall, and rent
+        const result = await Owner.createOwner(ownerData, strStallName, strStallType, datLeaseStart, datLeaseEnd, rentAmount);
+    
         // Check if insert result is valid
-        if (result && result.ownerResult && result.stallResult && result.ownerResult.affectedRows > 0 && result.stallResult.affectedRows > 0) {
-            return res.json({ status: "Success", message: "Owner and stall registered successfully" });
+        if (result && result.ownerResult && result.stallResult && result.rentResult &&
+            result.ownerResult.affectedRows > 0 && result.stallResult.affectedRows > 0 && result.rentResult.affectedRows > 0) {
+            return res.json({ status: "Success", message: "Owner, stall, and rent registered successfully" });
         } else {
-            return res.status(500).json({ error: "Failed to insert owner or stall data" });
+            return res.status(500).json({ error: "Failed to insert owner, stall, or rent data" });
         }
     } catch (error) {
-        console.error("Error creating owner and stall:", error);
-        res.status(500).json({ error: "Failed to insert data" });
+      console.error("Error creating owner, stall, and rent:", error);
+      res.status(500).json({ error: "Failed to insert data" });
     }
 };
 
