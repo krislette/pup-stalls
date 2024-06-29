@@ -16,7 +16,8 @@ function AddItem() {
     const ownerID = localStorage.getItem("ownerID");
 
     // Fetch the next item ID
-    Axios.get("http://localhost:3001/items/getID/nextItem")
+    Axios
+      .get("http://localhost:3001/items/getID/nextItem")
       .then((response) => {
         if (response.data.status === "Success") {
           setItemID(response.data.result);
@@ -27,7 +28,8 @@ function AddItem() {
       .catch((error) => console.log(error));
 
     // Fetch the stall ID based on owner ID
-    Axios.get(`http://localhost:3001/items/stalls/${ownerID}`)
+    Axios
+      .get(`http://localhost:3001/items/stalls/${ownerID}`)
       .then((response) => {
         if (response.data.status === "Success") {
           setStallID(response.data.stallID);
@@ -40,14 +42,15 @@ function AddItem() {
 
   const create = (e) => {
     e.preventDefault();
-    Axios.post("http://localhost:3001/items/create", {
-      strItemID: itemID,
-      strStallID: stallID,
-      strItemName: itemName,
-      strItemType: itemType,
-      decPurchasePrice: itemPurchasePrice,
-      strSupplierID: itemSupplierID,
-    })
+    Axios
+      .post("http://localhost:3001/items/create", {
+        strItemID: itemID,
+        strStallID: stallID,
+        strItemName: itemName,
+        strItemType: itemType,
+        decPurchasePrice: itemPurchasePrice,
+        strSupplierID: itemSupplierID,
+      })
       .then((response) => {
         console.log(response);
         if (response.data.status === "Success") {

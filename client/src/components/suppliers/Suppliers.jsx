@@ -21,7 +21,7 @@ function Suppliers() {
   return (
     <div className="px-5 py-3">
       <div className="d-flex justify-content-center mt-2">
-        <h3>Supplier List</h3>
+        <h3>PUP-Accredited Supplier List</h3>
       </div>
       <Link to="/add-supplier" className="btn btn-dark">Add Supplier</Link>
       <div className="mt-3">

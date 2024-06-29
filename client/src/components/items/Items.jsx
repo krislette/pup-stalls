@@ -39,7 +39,7 @@ function Items() {
   return (
     <div className="px-5 py-3">
       <div className="d-flex justify-content-center mt-2">
-        <h3>Item List</h3>
+        <h3>Your Item List</h3>
       </div>
       <Link to="/add-item" className="btn btn-dark">Add Item</Link>
       <div className="mt-3">
