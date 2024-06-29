@@ -23,7 +23,7 @@ function SalesAndTransactions() {
 
   const deleteTransaction = (strTransactionID) => {
     if (window.confirm("Are you sure you want to delete this transaction?")) {
-      Axios.delete(`http://localhost:3001/sales/delete/${strTransactionID}`)
+      Axios.delete(`http://localhost:3001/transactions/delete/${strTransactionID}`)
         .then(res => {
           if (res.data.status === "Success") {
             // Update the state to remove the deleted transaction

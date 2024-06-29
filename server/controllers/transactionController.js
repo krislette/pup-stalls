@@ -77,6 +77,23 @@ const getTransactionByID = async (req, res) => {
     }
 };
 
+const getStallIDByOwner = async (req, res) => {
+    try {
+      const ownerID = req.params.strOwnerID;
+      console.log("Fetching stall ID for owner ID:", ownerID); // Add logging
+      const result = await SalesAndTransaction.getStallIDByOwner(ownerID);
+      console.log("Result from database:", result); // Add logging
+      if (result.length > 0) {
+        res.json({ status: "Success", stallID: result[0].strStallID });
+      } else {
+        res.json({ status: "Error", message: "No stall found for the given owner ID" });
+      }
+    } catch (error) {
+      console.error("Error fetching stall ID by owner:", error);
+      res.status(500).json({ error: "Failed to fetch stall ID by owner" });
+    }
+  };
+
 const updateTransaction = async (req, res) => {
     try {
         const transactionID = req.params.strTransactionID;
@@ -131,6 +148,7 @@ module.exports = {
     getNextTransactionID, 
     getTransactions, 
     getTransactionByID, 
+    getStallIDByOwner,
     updateTransaction, 
     deleteTransaction, 
     getTransactionCount 

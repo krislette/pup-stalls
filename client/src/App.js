@@ -19,6 +19,7 @@ import AddMenuItem from "./components/menu/AddMenuItem";
 import EditMenuItem from "./components/menu/EditMenuItem";
 
 import SalesAndTransactions from "./components/transaction/SalesAndTransactions";
+import AddSalesTransactions from "./components/transaction/AddSalesAndTransactions";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
             <Route path="/menu/edit/:strMenuItemID" element={<EditMenuItem />}></Route>
 
             <Route path="/sales-and-transactions" element={<SalesAndTransactions />}></Route>
+            <Route path="/add-transaction" element={<AddSalesTransactions />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

@@ -6,6 +6,7 @@ const {
     getNextTransactionID, 
     getTransactions, 
     getTransactionByID, 
+    getStallIDByOwner,
     updateTransaction, 
     deleteTransaction, 
     getTransactionCount 
@@ -13,25 +14,28 @@ const {
 
 router.use(requestLogger);
 
-// GET /sales/:strOwnerID - Get all transactions of a specific owner
+// GET /transactions/:strOwnerID - Get all transactions of a specific owner
 router.get("/:strOwnerID", getTransactions);
 
-// POST /sales/create - Create a new transaction
+// POST /transactions/create - Create a new transaction
 router.post("/create", createTransaction);
 
-// GET /sales/:strTransactionID - Get transaction by ID
+// GET /transactions/:strTransactionID - Get transaction by ID
 router.get("/:strTransactionID", getTransactionByID);
 
-// PUT /sales/update/:strTransactionID - Update transaction by ID
+// PUT /transactions/update/:strTransactionID - Update transaction by ID
 router.put("/update/:strTransactionID", updateTransaction);
 
-// DELETE /sales/delete/:strTransactionID - Delete transaction by ID
+// DELETE /transactions/delete/:strTransactionID - Delete transaction by ID
 router.delete("/delete/:strTransactionID", deleteTransaction);
 
-// GET /sales/count/:strOwnerID - Get count of transactions
+// GET /transactions/count/:strOwnerID - Get count of transactions
 router.get("/count/:strOwnerID", getTransactionCount);
 
-// GET /sales/nextTransaction - Get next transaction ID
+// GET /transactions/nextTransaction - Get next transaction ID
 router.get("/getID/nextTransaction", getNextTransactionID);
+
+// GET /transactions/stalls/:strOwnerID - Get stall ID by owner ID
+router.get("/stalls/:strOwnerID", getStallIDByOwner);
 
 module.exports = router;

@@ -36,6 +36,11 @@ const getTransactionByID = (transactionID) => {
     return query(sql, [transactionID]);
 };
 
+const getStallIDByOwner = async (ownerID) => {
+    const sql = "SELECT strStallID FROM tblStall WHERE strOwnerID = ?";
+    return query(sql, [ownerID]);
+};
+
 const updateTransaction = (transactionID, transactionData) => {
     const { strStallID, datDateOfTransaction, strItemsSold, intQuantity, decTotalPrice, strPaymentMethod } = transactionData;
     const sql = "UPDATE tblSalesAndTransaction SET strStallID = ?, datDateOfTransaction = ?, strItemsSold = ?, intQuantity = ?, decTotalPrice = ?, strPaymentMethod = ? WHERE strTransactionID = ?";
@@ -65,6 +70,7 @@ module.exports = {
     getLastTransactionID, 
     getTransactions, 
     getTransactionByID, 
+    getStallIDByOwner,
     updateTransaction, 
     deleteTransaction, 
     getTransactionCountByOwner 
