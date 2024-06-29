@@ -30,6 +30,8 @@ import Employees from "./components/employee/Employees";
 import AddEmployee from "./components/employee/AddEmployee";
 import EditEmployee from "./components/employee/EditEmployee";
 
+import RentHistory from "./components/rent/RentHistory";
+
 function App() {
   return (
     <div className="App">
@@ -63,6 +65,8 @@ function App() {
             <Route path="/employees" element={<Employees />}></Route>
             <Route path="/add-employee" element={<AddEmployee />}></Route>
             <Route path="/employees/edit/:strEmployeeID" element={<EditEmployee />}></Route>
+
+            <Route path="/rents" element={<RentHistory />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

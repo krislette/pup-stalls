@@ -9,6 +9,7 @@ const menuRouter = require("./routers/menuRouter");
 const transactionRouter = require("./routers/transactionRouter");
 const financeRouter = require("./routers/financeRouter");
 const employeeRouter = require("./routers/employeeRouter");
+const rentHistoryRouter = require("./routers/rentHistoryRouter");
 
 const app = express();
 const port = 3001;
@@ -36,6 +37,9 @@ app.use("/finances", financeRouter);
 
 // Mount employeeRouter for handling employee-related operations
 app.use("/employees", employeeRouter);
+
+// Mount rentHistoryRouter for handling rent history-related operations
+app.use("/history", rentHistoryRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on http://127.0.0.1:${port}`);

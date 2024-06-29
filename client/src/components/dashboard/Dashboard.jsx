@@ -79,8 +79,8 @@ function Dashboard() {
                 </Link>
               </li>
               <li>
-                <Link to="/rent" className="nav-link px-0 align-middle text-white">
-                  <span className="ms-1 d-none d-sm-inline">Rent</span>
+                <Link to="/rents" className="nav-link px-0 align-middle text-white">
+                  <span className="ms-1 d-none d-sm-inline">Rent History</span>
                 </Link>
               </li>
               <li>
