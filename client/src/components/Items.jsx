@@ -20,6 +20,22 @@ function Items() {
       .catch(error => console.log(error));
   }, []);
 
+  const deleteItem = (strItemID) => {
+    if (window.confirm("Are you sure you want to delete this item?")) {
+      Axios.delete(`http://localhost:3001/items/delete/${strItemID}`)
+        .then(res => {
+          if (res.data.status === "Success") {
+            // Update the state to remove the deleted item
+            setData(data.filter(item => item.strItemID !== strItemID));
+            alert("Item deleted successfully");
+          } else {
+            alert("Failed to delete item");
+          }
+        })
+        .catch(error => console.log(error));
+    }
+  };
+
   return (
     <div className="px-5 py-3">
       <div className="d-flex justify-content-center mt-2">
@@ -49,7 +65,11 @@ function Items() {
                   <td>{item.strSupplierID}</td>
                   <td>
                     <Link to={`edit/${item.strItemID}`} className="btn btn-success btn-sm me-2">Edit</Link>
-                    <button className="btn btn-sm btn-danger">Delete</button>
+                    <button 
+                      className="btn btn-sm btn-danger" 
+                      onClick={() => deleteItem(item.strItemID)}>
+                      Delete
+                    </button>
                   </td>
                 </tr>
               )
