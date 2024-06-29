@@ -113,12 +113,13 @@ const getCount = async (req, res) => {
     }
 };
 
-const getSuppliersCount = async (req, res, next) => {
+const getCountAll = async (req, res) => {
     try {
-      const count = await Supplier.getSupplierCount();
-      res.status(200).json({ status: "Success", count: count });
+        const results = await Supplier.getSupplierCount();
+        console.log("Results from database:", results);
+        res.status(200).json({ status: "Success", count: results[0].supplierCount });
     } catch (error) {
-      res.status(500).json({ error: error.message });
+        res.status(500).json({ error: error.message });
     }
 };
 
@@ -130,5 +131,5 @@ module.exports = {
     updateSupplier,
     deleteSupplier,
     getCount,
-    getSuppliersCount
+    getCountAll
 };

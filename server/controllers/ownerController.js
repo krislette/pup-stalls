@@ -52,14 +52,16 @@ const getOwners = async (req, res) => {
     }
 };
 
-const getOwnerByID = async (req, res) => {
+const getOwner = async (req, res) => {
     try {
-        const ownerID = req.params.strownerID;
+        const ownerID = req.params.strOwnerID; // Adjust parameter name to match route
         const result = await Owner.getOwnerByID(ownerID);
+
         if (result.length === 0) {
             return res.status(404).json({ message: "Owner not found" });
         }
-        res.json({ status: "Success", owner: result[0] });
+
+        res.json({ status: "Success", owner: result[0] }); // Return the first (and only) result
     } catch (error) {
         console.error("Error fetching owner by ID:", error);
         res.status(500).json({ error: "Error fetching owner from database" });
@@ -146,7 +148,7 @@ const getProfile = async (req, res) => {
 module.exports = { 
     createOwner, 
     getOwners, 
-    getOwnerByID, 
+    getOwner,
     updateOwner, 
     deleteOwner, 
     loginOwner,

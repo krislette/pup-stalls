@@ -4,7 +4,7 @@ const { requestLogger } = require("../middlewares/requestLogger");
 const { 
     createOwner, 
     getOwners, 
-    getOwnerByID, 
+    getOwner, 
     updateOwner, 
     deleteOwner, 
     loginOwner,
@@ -20,7 +20,7 @@ router.get('/', getOwners);
 router.post("/register", createOwner);
 
 // GET /owners/:strOwnerID - Get owner by ID
-router.get("/:strOwnerID", getOwnerByID);
+router.get("/:strOwnerID", getOwner);
 
 // PUT /owners/update/:strOwnerID - Update owner by ID
 router.put("/update/:strOwnerID", updateOwner);
