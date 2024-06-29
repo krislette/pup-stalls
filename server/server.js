@@ -5,6 +5,7 @@ const ownerRouter = require("./routers/ownerRouter");
 const itemRouter = require("./routers/itemRouter");
 const supplierRouter = require("./routers/supplierRouter");
 const menuRouter = require("./routers/menuRouter");
+const transactionRouter = require("./routers/transactionRouter");
 
 const app = express();
 const port = 3001;
@@ -23,6 +24,9 @@ app.use("/suppliers", supplierRouter);
 
 // Mount menuRouter for handling menu-related operations
 app.use("/menu", menuRouter);
+
+// Mount salesRouter for handling sales and transaction-related operations
+app.use("/transactions", transactionRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on http://127.0.0.1:${port}`);
