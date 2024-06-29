@@ -24,6 +24,18 @@ const getMenuItems = async (ownerID) => {
     return query(sql, [ownerID]);
 };
 
+const getLastMenuItemID = async () => {
+    const sql = "SELECT strMenuItemID FROM tblMenu ORDER BY strMenuItemID DESC LIMIT 1";
+    const result = await query(sql);
+    console.log("Last Menu Item ID Result:", result); // Add this log
+    return result;
+};
+
+const getStallIDByOwner = async (ownerID) => {
+    const sql = "SELECT strStallID FROM tblStall WHERE strOwnerID = ?";
+    return query(sql, [ownerID]);
+};
+
 const getMenuItemByID = (menuItemID) => {
     const sql = "SELECT * FROM tblMenu WHERE strMenuItemID = ?";
     return query(sql, [menuItemID]);
@@ -44,6 +56,8 @@ const deleteMenuItem = (menuItemID) => {
 module.exports = {
     createMenuItem,
     getMenuItems,
+    getLastMenuItemID,
+    getStallIDByOwner,
     getMenuItemByID,
     updateMenuItem,
     deleteMenuItem

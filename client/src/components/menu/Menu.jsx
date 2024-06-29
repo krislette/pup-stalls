@@ -45,7 +45,7 @@ function Menu() {
                 <td>{item.strDescription}</td>
                 <td>{item.decSellingPrice}</td>
                 <td>
-                  <Link to={`edit-menu/${item.strMenuItemID}`} className="btn btn-success btn-sm me-2">Edit</Link>
+                  <Link to={`edit/${item.strMenuItemID}`} className="btn btn-success btn-sm me-2">Edit</Link>
                   <button
                     className="btn btn-sm btn-danger"
                     >

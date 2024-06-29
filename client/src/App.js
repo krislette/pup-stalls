@@ -15,6 +15,7 @@ import AddSupplier from "./components/suppliers/AddSupplier";
 import EditSupplier from "./components/suppliers/EditSupplier";
 
 import Menu from "./components/menu/Menu";
+import AddMenuItem from "./components/menu/AddMenuItem";
 
 function App() {
   return (
@@ -34,7 +35,8 @@ function App() {
             <Route path="/add-supplier" element={<AddSupplier />}></Route>
             <Route path="/suppliers/edit/:strSupplierID" element={<EditSupplier />}></Route>
 
-            <Route path="menu" element={<Menu />}></Route>
+            <Route path="/menu" element={<Menu />}></Route>
+            <Route path="add-menu-item" element={<AddMenuItem />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>
