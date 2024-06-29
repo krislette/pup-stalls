@@ -26,6 +26,10 @@ import Finances from "./components/finance/Finances";
 import AddFinance from "./components/finance/AddFinance";
 import EditFinance from "./components/finance/EditFinance";
 
+import Employees from "./components/employee/Employees";
+import AddEmployee from "./components/employee/AddEmployee";
+import EditEmployee from "./components/employee/EditEmployee";
+
 function App() {
   return (
     <div className="App">
@@ -55,6 +59,10 @@ function App() {
             <Route path="/finances" element={<Finances />}></Route>
             <Route path="/add-finance" element={<AddFinance />}></Route>
             <Route path="/finances/edit/:strFinanceID" element={<EditFinance />}></Route>
+
+            <Route path="/employees" element={<Employees />}></Route>
+            <Route path="/add-employee" element={<AddEmployee />}></Route>
+            <Route path="/employees/edit/:strEmployeeID" element={<EditEmployee />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>
