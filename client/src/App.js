@@ -12,6 +12,7 @@ import EditItem from "./components/items/EditItem";
 
 import Suppliers from "./components/suppliers/Suppliers";
 import AddSupplier from "./components/suppliers/AddSupplier";
+import EditSupplier from "./components/suppliers/EditSupplier";
 
 function App() {
   return (
@@ -28,7 +29,8 @@ function App() {
             <Route path="/items/edit/:strItemID" element={<EditItem />}></Route>
 
             <Route path="/suppliers" element={<Suppliers />}></Route>
-            <Route path="add-supplier" element={<AddSupplier />}></Route>
+            <Route path="/add-supplier" element={<AddSupplier />}></Route>
+            <Route path="/suppliers/edit/:strSupplierID" element={<EditSupplier />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>
