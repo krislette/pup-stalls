@@ -8,7 +8,8 @@ const {
     getMenuItemByID,
     getStallIDByOwner,
     updateMenuItem,
-    deleteMenuItem
+    deleteMenuItem,
+    getCount
 } = require("../controllers/menuController");
 
 router.use(requestLogger);
@@ -31,7 +32,10 @@ router.put("/update/:strMenuItemID", updateMenuItem);
 // DELETE /menu/delete/:strMenuItemID - Delete menu item by ID
 router.delete("/delete/:strMenuItemID", deleteMenuItem);
 
-// GET /items/stalls/:strOwnerID - Get stall ID by owner ID
+// GET /menu/stalls/:strOwnerID - Get stall ID by owner ID
 router.get("/stalls/:strOwnerID", getStallIDByOwner);
+
+// GET /menu/count/:strOwnerID - Get menu count by an owner
+router.get("/count/:strOwnerID", getCount) 
 
 module.exports = router;

@@ -8,6 +8,8 @@ const {
     getSupplierByID,
     updateSupplier,
     deleteSupplier,
+    getCount,
+    getSuppliersCount
 } = require("../controllers/supplierController");
 
 router.use(requestLogger);
@@ -29,5 +31,11 @@ router.put("/update/:strSupplierID", updateSupplier);
 
 // DELETE /suppliers/delete/:strSupplierID - Delete supplier by ID
 router.delete("/delete/:strSupplierID", deleteSupplier);
+
+// GET /suppliers/count/:strStallID - Get count of suppliers via owner id
+router.get("/count/:strOwnerID", getCount);
+
+// GET /suppliers/count - Get count of all suppliers
+router.get("/count", getSuppliersCount);
 
 module.exports = router;

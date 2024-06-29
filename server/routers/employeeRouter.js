@@ -8,7 +8,8 @@ const {
     getEmployeeByID, 
     updateEmployee, 
     deleteEmployee,
-    getNextEmployeeID
+    getNextEmployeeID,
+    getCount
 } = require("../controllers/employeeController");
 
 router.use(requestLogger);
@@ -33,5 +34,8 @@ router.get("/getID/nextEmployee", getNextEmployeeID);
 
 // GET /employees/stalls/:strOwnerID - Get stall ID by owner ID (for employee creation)
 router.get("/stalls/:strOwnerID", getStallIDByOwner);
+
+// GET /employees/count/:strOwnerID - Get count of employees per owner
+router.get("/count/:strOwnerID", getCount);
 
 module.exports = router;

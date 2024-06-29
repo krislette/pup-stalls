@@ -53,6 +53,18 @@ const deleteMenuItem = (menuItemID) => {
     return query(sql, [menuItemID]);
 };
 
+const getCountByOwner = (ownerID) => {
+    const sql = `
+        SELECT tblStall.strStallID, COUNT(tblMenu.strMenuItemID) AS menuCount
+        FROM tblStall
+        LEFT JOIN tblMenu ON tblStall.strStallID = tblMenu.strStallID
+        WHERE tblStall.strOwnerID = ?
+        GROUP BY tblStall.strStallID;
+    `;
+    
+    return query(sql, [ownerID]);
+};
+
 module.exports = {
     createMenuItem,
     getMenuItems,
@@ -60,5 +72,6 @@ module.exports = {
     getStallIDByOwner,
     getMenuItemByID,
     updateMenuItem,
-    deleteMenuItem
+    deleteMenuItem,
+    getCountByOwner
 };

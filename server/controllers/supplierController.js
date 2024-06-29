@@ -94,11 +94,41 @@ const deleteSupplier = async (req, res) => {
     }
 };
 
+const getCount = async (req, res) => {
+    try {
+        const ownerID = req.params.strOwnerID;
+        console.log("Fetching supplier counts for owner ID:", ownerID); // Log ownerID
+
+        const results = await Supplier.getCountByOwner(ownerID);
+        console.log("Results from database:", results); // Log results
+
+        if (results.length === 0) {
+            console.warn("No suppliers found for the given owner ID:", ownerID); // Log warning if no items found
+        }
+
+        res.json({ status: "Success", count: results[0].supplierCount });
+    } catch (error) {
+        console.error("Error fetching supplier counts by owner:", error);
+        res.status(500).json({ error: "Error fetching supplier counts by owner from database" });
+    }
+};
+
+const getSuppliersCount = async (req, res, next) => {
+    try {
+      const count = await Supplier.getSupplierCount();
+      res.status(200).json({ status: "Success", count: count });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+};
+
 module.exports = {
     createSupplier,
     getSuppliers,
     getSuppliersByOwner,
     getSupplierByID,
     updateSupplier,
-    deleteSupplier
+    deleteSupplier,
+    getCount,
+    getSuppliersCount
 };

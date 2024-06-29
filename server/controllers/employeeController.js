@@ -133,7 +133,7 @@ const getCount = async (req, res) => {
         console.log("Results from database:", results); // Log results
 
         if (results.length === 0) {
-            console.warn("No employees found for the given owner ID:", ownerID); // Log warning if no employees found
+            console.warn("No employee found for the given owner ID:", ownerID); // Log warning if no items found
         }
 
         res.json({ status: "Success", count: results[0].employeeCount });

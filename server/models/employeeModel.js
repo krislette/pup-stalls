@@ -52,6 +52,18 @@ const deleteEmployee = (employeeID) => {
     return query(sql, [employeeID]);
 };
 
+const getCountByOwner = (ownerID) => {
+    const sql = `
+        SELECT tblStall.strStallID, COUNT(tblEmployee.strEmployeeID) AS employeeCount
+        FROM tblStall
+        LEFT JOIN tblEmployee ON tblStall.strStallID = tblEmployee.strStallID
+        WHERE tblStall.strOwnerID = ?
+        GROUP BY tblStall.strStallID;
+    `;
+    
+    return query(sql, [ownerID]);
+};
+
 module.exports = { 
     createEmployee, 
     getLastEmployeeID,
@@ -59,5 +71,6 @@ module.exports = {
     getEmployees, 
     getEmployeeByID, 
     updateEmployee, 
-    deleteEmployee
+    deleteEmployee,
+    getCountByOwner
 };

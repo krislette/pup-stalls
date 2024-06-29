@@ -56,6 +56,27 @@ const deleteSupplier = (supplierID) => {
     return query(sql, [supplierID]);
 };
 
+const getCountByOwner = (ownerID) => {
+    const sql = `
+        SELECT tblStall.strStallID, COUNT(DISTINCT tblSupplier.strSupplierID) AS supplierCount
+        FROM tblStall
+        LEFT JOIN tblItem ON tblStall.strStallID = tblItem.strStallID
+        LEFT JOIN tblSupplier ON tblItem.strSupplierID = tblSupplier.strSupplierID
+        WHERE tblStall.strOwnerID = ?
+        GROUP BY tblStall.strStallID;
+    `;
+    
+    return query(sql, [ownerID]);
+};
+
+const getSupplierCount = async () => {
+    const sql = `
+        SELECT COUNT(*) AS supplierCount
+        FROM tblSupplier;
+    `;
+    return query(sql);
+};
+
 module.exports = {
     createSupplier,
     getLastSupplierID, 
@@ -63,5 +84,7 @@ module.exports = {
     getSuppliersByOwner,
     getSupplierByID,
     updateSupplier,
-    deleteSupplier
+    deleteSupplier,
+    getCountByOwner,
+    getSupplierCount
 };

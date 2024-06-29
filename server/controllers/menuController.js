@@ -123,6 +123,25 @@ const deleteMenuItem = async (req, res) => {
     }
 };
 
+const getCount = async (req, res) => {
+    try {
+        const ownerID = req.params.strOwnerID;
+        console.log("Fetching menu counts for owner ID:", ownerID); // Log ownerID
+
+        const results = await Menu.getCountByOwner(ownerID);
+        console.log("Results from database:", results); // Log results
+
+        if (results.length === 0) {
+            console.warn("No menu found for the given owner ID:", ownerID); // Log warning if no items found
+        }
+
+        res.json({ status: "Success", count: results[0].menuCount });
+    } catch (error) {
+        console.error("Error fetching menu counts by owner:", error);
+        res.status(500).json({ error: "Error fetching menu counts by owner from database" });
+    }
+};
+
 module.exports = {
     createMenuItem,
     getMenuItems,
@@ -130,5 +149,6 @@ module.exports = {
     getStallIDByOwner,
     getMenuItemByID,
     updateMenuItem,
-    deleteMenuItem
+    deleteMenuItem,
+    getCount
 };
