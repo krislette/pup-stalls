@@ -64,7 +64,7 @@ function Dashboard() {
               </li>
               <li>
                 <Link
-                  to="/finance"
+                  to="/finances"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <span className="ms-1 d-none d-sm-inline">Finance</span>

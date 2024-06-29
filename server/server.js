@@ -1,11 +1,13 @@
 require("dotenv").config(); // For environment variables
 const express = require("express");
 const cors = require("cors");
+
 const ownerRouter = require("./routers/ownerRouter");
 const itemRouter = require("./routers/itemRouter");
 const supplierRouter = require("./routers/supplierRouter");
 const menuRouter = require("./routers/menuRouter");
 const transactionRouter = require("./routers/transactionRouter");
+const financeRouter = require("./routers/financeRouter");
 
 const app = express();
 const port = 3001;
@@ -27,6 +29,9 @@ app.use("/menu", menuRouter);
 
 // Mount salesRouter for handling sales and transaction-related operations
 app.use("/transactions", transactionRouter);
+
+// Mount financeRouter for handling finance-related operations
+app.use("/finances", financeRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on http://127.0.0.1:${port}`);

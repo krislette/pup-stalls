@@ -22,6 +22,9 @@ import SalesAndTransactions from "./components/transaction/SalesAndTransactions"
 import AddSalesTransactions from "./components/transaction/AddSalesAndTransactions";
 import EditSalesAndTransactions from "./components/transaction/EditSalesAndTransactions";
 
+import Finances from "./components/finance/Finances";
+import AddFinance from "./components/finance/AddFinance";
+
 function App() {
   return (
     <div className="App">
@@ -47,6 +50,9 @@ function App() {
             <Route path="/sales-and-transactions" element={<SalesAndTransactions />}></Route>
             <Route path="/add-transaction" element={<AddSalesTransactions />}></Route>
             <Route path="/sales-and-transactions/edit/:strTransactionID" element={<EditSalesAndTransactions />}></Route>
+
+            <Route path="/finances" element={<Finances />}></Route>
+            <Route path="/add-finance" element={<AddFinance />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

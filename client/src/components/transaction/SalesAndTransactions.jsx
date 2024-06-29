@@ -48,7 +48,6 @@ function SalesAndTransactions() {
           <thead>
             <tr>
               <th>Transaction ID</th>
-              <th>Stall ID</th>
               <th>Date of Transaction</th>
               <th>Items Sold</th>
               <th>Quantity</th>
@@ -63,7 +62,6 @@ function SalesAndTransactions() {
               return (
                 <tr key={index}>
                   <td>{transaction.strTransactionID}</td>
-                  <td>{transaction.strStallID}</td>
                   <td>{formattedDate}</td>
                   <td>{transaction.strItemsSold}</td>
                   <td>{transaction.intQuantity}</td>
