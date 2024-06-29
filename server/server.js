@@ -4,6 +4,7 @@ const cors = require("cors");
 const ownerRouter = require("./routers/ownerRouter");
 const itemRouter = require("./routers/itemRouter");
 const supplierRouter = require("./routers/supplierRouter");
+const menuRouter = require("./routers/menuRouter");
 
 const app = express();
 const port = 3001;
@@ -19,6 +20,9 @@ app.use("/items", itemRouter);
 
 // Mount supplierRouter for handling supplier-related operations
 app.use("/suppliers", supplierRouter);
+
+// Mount menuRouter for handling menu-related operations
+app.use("/menu", menuRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on http://127.0.0.1:${port}`);

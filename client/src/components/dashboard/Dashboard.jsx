@@ -48,6 +48,11 @@ function Dashboard() {
                 </Link>
               </li>
               <li>
+                <Link to="/menu" className="nav-link px-0 align-middle text-white">
+                  <span className="ms-1 d-none d-sm-inline">Menu</span>
+                </Link>
+              </li>
+              <li>
                 <Link
                   to="/sales"
                   className="nav-link px-0 align-middle text-white"
@@ -55,11 +60,6 @@ function Dashboard() {
                   <span className="ms-1 d-none d-sm-inline">
                     Sales and Transaction
                   </span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/menu" className="nav-link px-0 align-middle text-white">
-                  <span className="ms-1 d-none d-sm-inline">Menu</span>
                 </Link>
               </li>
               <li>

@@ -14,6 +14,8 @@ import Suppliers from "./components/suppliers/Suppliers";
 import AddSupplier from "./components/suppliers/AddSupplier";
 import EditSupplier from "./components/suppliers/EditSupplier";
 
+import Menu from "./components/menu/Menu";
+
 function App() {
   return (
     <div className="App">
@@ -31,6 +33,8 @@ function App() {
             <Route path="/suppliers" element={<Suppliers />}></Route>
             <Route path="/add-supplier" element={<AddSupplier />}></Route>
             <Route path="/suppliers/edit/:strSupplierID" element={<EditSupplier />}></Route>
+
+            <Route path="menu" element={<Menu />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>
