@@ -98,9 +98,10 @@ function AddMenuItem() {
         <div className="col-12">
           <label className="form-label">Enter Selling Price</label>
           <input
-            type="text"
+            type="number"
             className="form-control"
             placeholder="Enter Selling Price"
+            step="10"
             autoComplete="off"
             value={sellingPrice}
             onChange={(e) => setSellingPrice(e.target.value)}

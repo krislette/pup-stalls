@@ -92,9 +92,10 @@ function EditItem() {
         <div className="col-12">
           <label className="form-label">Enter Purchase Price</label>
           <input
-            type="text"
+            type="number"
             className="form-control"
             placeholder="Enter Purchase Price"
+            step="10"
             autoComplete="off"
             value={itemPurchasePrice}
             onChange={(e) => setItemPurchasePrice(e.target.value)}

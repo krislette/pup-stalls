@@ -24,6 +24,7 @@ import EditSalesAndTransactions from "./components/transaction/EditSalesAndTrans
 
 import Finances from "./components/finance/Finances";
 import AddFinance from "./components/finance/AddFinance";
+import EditFinance from "./components/finance/EditFinance";
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
 
             <Route path="/finances" element={<Finances />}></Route>
             <Route path="/add-finance" element={<AddFinance />}></Route>
+            <Route path="/finances/edit/:strFinanceID" element={<EditFinance />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

@@ -136,7 +136,7 @@ function SignUp() {
                   value={ownerGender}
                   onChange={(e) => setOwnerGender(e.target.value)}
                 >
-                  <option value="">Select Gender (Optional)</option>
+                  <option value=""></option>
                   <option value="F">F</option>
                   <option value="M">M</option>
                 </select>

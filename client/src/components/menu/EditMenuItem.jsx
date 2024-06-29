@@ -87,9 +87,10 @@ function EditMenuItem() {
         <div className="col-12">
           <label className="form-label">Enter Selling Price</label>
           <input
-            type="text"
+            type="number"
             className="form-control"
             placeholder="Enter Selling Price"
+            step="10"
             autoComplete="off"
             value={menuSellingPrice}
             onChange={(e) => setMenuSellingPrice(e.target.value)}
