@@ -18,6 +18,8 @@ import Menu from "./components/menu/Menu";
 import AddMenuItem from "./components/menu/AddMenuItem";
 import EditMenuItem from "./components/menu/EditMenuItem";
 
+import SalesAndTransactions from "./components/transaction/SalesAndTransactions";
+
 function App() {
   return (
     <div className="App">
@@ -39,6 +41,8 @@ function App() {
             <Route path="/menu" element={<Menu />}></Route>
             <Route path="/add-menu-item" element={<AddMenuItem />}></Route>
             <Route path="/menu/edit/:strMenuItemID" element={<EditMenuItem />}></Route>
+
+            <Route path="/sales-and-transactions" element={<SalesAndTransactions />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

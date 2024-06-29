@@ -54,7 +54,7 @@ function Dashboard() {
               </li>
               <li>
                 <Link
-                  to="/sales"
+                  to="/sales-and-transactions"
                   className="nav-link px-0 align-middle text-white"
                 >
                   <span className="ms-1 d-none d-sm-inline">
