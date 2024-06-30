@@ -9,7 +9,8 @@ function Finances() {
   useEffect(() => {
     const ownerID = localStorage.getItem("ownerID");
     
-    Axios.get(`http://localhost:3001/finances/${ownerID}`)
+    Axios
+      .get(`http://localhost:3001/finances/${ownerID}`)
       .then(res => {
         if (res.data.status === "Success") {
           setData(res.data.result);
@@ -22,7 +23,8 @@ function Finances() {
 
   const deleteFinanceRecord = (strFinanceID) => {
     if (window.confirm("Are you sure you want to delete this finance record?")) {
-      Axios.delete(`http://localhost:3001/finances/delete/${strFinanceID}`)
+      Axios
+        .delete(`http://localhost:3001/finances/delete/${strFinanceID}`)
         .then(res => {
           if (res.data.status === "Success") {
             // Update the state to remove the deleted record

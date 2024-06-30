@@ -8,7 +8,8 @@ function Items() {
   useEffect(() => {
     const ownerID = localStorage.getItem("ownerID");
 
-    Axios.get(`http://localhost:3001/items/${ownerID}`)
+    Axios
+      .get(`http://localhost:3001/items/${ownerID}`)
       .then(res => {
         if (res.data.status === "Success") {
           setData(res.data.result);
@@ -21,7 +22,8 @@ function Items() {
 
   const deleteItem = (strItemID) => {
     if (window.confirm("Are you sure you want to delete this item?")) {
-      Axios.delete(`http://localhost:3001/items/delete/${strItemID}`)
+      Axios
+        .delete(`http://localhost:3001/items/delete/${strItemID}`)
         .then(res => {
           if (res.data.status === "Success") {
             // Update the state to remove the deleted item

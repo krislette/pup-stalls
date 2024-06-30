@@ -8,7 +8,8 @@ function Menu() {
   useEffect(() => {
     const ownerID = localStorage.getItem("ownerID");
 
-    Axios.get(`http://localhost:3001/menu/${ownerID}`)
+    Axios
+      .get(`http://localhost:3001/menu/${ownerID}`)
       .then(res => {
         if (res.data.status === "Success") {
           setData(res.data.result);
@@ -21,7 +22,8 @@ function Menu() {
 
   const deleteMenuItem = (strMenuItemID) => {
     if (window.confirm("Are you sure you want to delete this menu item?")) {
-      Axios.delete(`http://localhost:3001/menu/delete/${strMenuItemID}`)
+      Axios
+        .delete(`http://localhost:3001/menu/delete/${strMenuItemID}`)
         .then(res => {
           if (res.data.status === "Success") {
             // Update the state to remove the deleted menu item

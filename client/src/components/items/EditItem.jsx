@@ -53,7 +53,7 @@ function EditItem() {
         console.log(response);
         if (response.data.status === "Success") {
           setUpdateStatus(response.data.message);
-          navigate("/items"); // Navigate to the items page on success
+          navigate("/items");
           alert("Item updated successfully");
         } else {
           setUpdateStatus("Failed to update item");

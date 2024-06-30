@@ -17,7 +17,8 @@ function EditFinance() {
     const ownerID = localStorage.getItem("ownerID");
 
     // Fetch finance details by ID
-    Axios.get(`http://localhost:3001/finances/${strFinanceID}`)
+    Axios
+      .get(`http://localhost:3001/finances/${strFinanceID}`)
       .then(response => {
         const finance = response.data.finance;
         setStallID(finance.strStallID);
@@ -30,7 +31,8 @@ function EditFinance() {
       .catch(error => console.log(error));
 
     // Fetch stall ID based on owner ID
-    Axios.get(`http://localhost:3001/finances/stalls/${ownerID}`)
+    Axios
+      .get(`http://localhost:3001/finances/stalls/${ownerID}`)
       .then(response => {
         if (response.data.status === "Success") {
           setStallID(response.data.stallID);
@@ -43,25 +45,26 @@ function EditFinance() {
 
   const updateFinance = (e) => {
     e.preventDefault();
-    Axios.put(`http://localhost:3001/finances/update/${strFinanceID}`, {
-      strStallID: stallID,
-      datComputationDate: computationDate,
-      decExpenses: expenses,
-      decProfits: profits,
-      decRevenue: revenue,
-      strExpenseCategory: expenseCategory
-    })
-    .then(response => {
-      console.log(response);
-      if (response.data.status === "Success") {
-        setUpdateStatus(response.data.message);
-        navigate("/finances"); // Navigate to the finances page on success
-        alert("Finance record updated successfully");
-      } else {
-        setUpdateStatus("Failed to update finance record");
-      }
-    })
-    .catch(error => console.log(error));
+    Axios
+      .put(`http://localhost:3001/finances/update/${strFinanceID}`, {
+        strStallID: stallID,
+        datComputationDate: computationDate,
+        decExpenses: expenses,
+        decProfits: profits,
+        decRevenue: revenue,
+        strExpenseCategory: expenseCategory
+      })
+      .then(response => {
+        console.log(response);
+        if (response.data.status === "Success") {
+          setUpdateStatus(response.data.message);
+          navigate("/finances"); // Navigate to the finances page on success
+          alert("Finance record updated successfully");
+        } else {
+          setUpdateStatus("Failed to update finance record");
+        }
+      })
+      .catch(error => console.log(error));
   };
 
   return (

@@ -3,6 +3,8 @@ import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function AddItem() {
+  const [itemID, setItemID] = useState("");
+  const [stallID, setStallID] = useState("");
   const [itemName, setItemName] = useState("");
   const [itemType, setItemType] = useState("");
   const [itemPurchasePrice, setItemPurchasePrice] = useState("");
@@ -14,10 +16,11 @@ function AddItem() {
     const ownerID = localStorage.getItem("ownerID");
 
     // Fetch the next item ID
-    Axios.get("http://localhost:3001/items/getID/nextItem")
+    Axios
+      .get("http://localhost:3001/items/getID/nextItem")
       .then((response) => {
         if (response.data.status === "Success") {
-          // No need to store itemID in state, directly use in the form
+          setItemID(response.data.result);
         } else {
           console.log("Error fetching next item ID");
         }
@@ -25,10 +28,11 @@ function AddItem() {
       .catch((error) => console.log(error));
 
     // Fetch the stall ID based on owner ID
-    Axios.get(`http://localhost:3001/items/stalls/${ownerID}`)
+    Axios
+      .get(`http://localhost:3001/items/stalls/${ownerID}`)
       .then((response) => {
         if (response.data.status === "Success") {
-          // No need to store stallID in state, directly use in the form
+          setStallID(response.data.stallID);
         } else {
           console.log("Error fetching stall ID");
         }
@@ -38,12 +42,15 @@ function AddItem() {
 
   const create = (e) => {
     e.preventDefault();
-    Axios.post("http://localhost:3001/items/create", {
-      strItemName: itemName,
-      strItemType: itemType,
-      decPurchasePrice: itemPurchasePrice,
-      strSupplierID: itemSupplierID,
-    })
+    Axios
+      .post("http://localhost:3001/items/create", {
+        strItemID: itemID,
+        strStallID: stallID,
+        strItemName: itemName,
+        strItemType: itemType,
+        decPurchasePrice: itemPurchasePrice,
+        strSupplierID: itemSupplierID,
+      })
       .then((response) => {
         console.log(response);
         if (response.data.status === "Success") {

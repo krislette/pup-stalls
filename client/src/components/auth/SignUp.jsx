@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Axios from "axios";
-import bgImage from "../../assets/PUPLagoon.jpg"; // Import the new background image
+import bgImage from "../../assets/pup-lagoon.jpg";
 
 function SignUp() {
   const [ownerID, setOwnerID] = useState("");

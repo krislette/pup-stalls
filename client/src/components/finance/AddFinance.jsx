@@ -3,6 +3,8 @@ import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function AddFinance() {
+  const [financeID, setFinanceID] = useState("");
+  const [stallID, setStallID] = useState("");
   const [computationDate, setComputationDate] = useState("");
   const [expenses, setExpenses] = useState("");
   const [profits, setProfits] = useState("");
@@ -15,10 +17,11 @@ function AddFinance() {
     const ownerID = localStorage.getItem("ownerID");
 
     // Fetch the next finance ID
-    Axios.get("http://localhost:3001/finances/getID/nextFinance")
+    Axios
+      .get("http://localhost:3001/finances/getID/nextFinance")
       .then((response) => {
         if (response.data.status === "Success") {
-          // No need to store financeID in state, directly use in the form
+          setFinanceID(response.data.result);
         } else {
           console.log("Error fetching next finance ID");
         }
@@ -26,10 +29,11 @@ function AddFinance() {
       .catch((error) => console.log(error));
 
     // Fetch the stall ID based on owner ID
-    Axios.get(`http://localhost:3001/finances/stalls/${ownerID}`)
+    Axios
+      .get(`http://localhost:3001/finances/stalls/${ownerID}`)
       .then((response) => {
         if (response.data.status === "Success") {
-          // No need to store stallID in state, directly use in the form
+          setStallID(response.data.stallID);
         } else {
           console.log("Error fetching stall ID");
         }
@@ -39,15 +43,16 @@ function AddFinance() {
 
   const createFinance = (e) => {
     e.preventDefault();
-    Axios.post("http://localhost:3001/finances/create", {
-      // strFinanceID: financeID, // Removed from payload
-      // strStallID: stallID, // Removed from payload
-      datComputationDate: computationDate,
-      decExpenses: expenses,
-      decProfits: profits,
-      decRevenue: revenue,
-      strExpenseCategory: expenseCategory,
-    })
+    Axios
+      .post("http://localhost:3001/finances/create", {
+        strFinanceID: financeID,
+        strStallID: stallID,
+        datComputationDate: computationDate,
+        decExpenses: expenses,
+        decProfits: profits,
+        decRevenue: revenue,
+        strExpenseCategory: expenseCategory,
+      })
       .then((response) => {
         console.log(response);
         if (response.data.status === "Success") {
@@ -93,7 +98,7 @@ function AddFinance() {
                       type="number"
                       className="form-control"
                       placeholder="Enter Expenses"
-                      step="1000"
+                      step="100"
                       autoComplete="off"
                       onChange={(e) => setExpenses(e.target.value)}
                     />
@@ -108,7 +113,7 @@ function AddFinance() {
                       type="number"
                       className="form-control"
                       placeholder="Enter Profits"
-                      step="1000"
+                      step="100"
                       autoComplete="off"
                       onChange={(e) => setProfits(e.target.value)}
                     />

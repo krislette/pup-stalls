@@ -14,7 +14,8 @@ function EditMenuItem() {
   useEffect(() => {
     const ownerID = localStorage.getItem("ownerID");
 
-    Axios.get(`http://localhost:3001/menu/${strMenuItemID}`)
+    Axios
+      .get(`http://localhost:3001/menu/${strMenuItemID}`)
       .then(response => {
         const menuItem = response.data.menuItem;
         setMenuItemName(menuItem.strMenuItemName);
@@ -24,7 +25,8 @@ function EditMenuItem() {
       .catch(error => console.log(error));
 
     // Fetch the stall ID based on owner ID
-    Axios.get(`http://localhost:3001/menu/stalls/${ownerID}`)
+    Axios
+      .get(`http://localhost:3001/menu/stalls/${ownerID}`)
       .then(response => {
         if (response.data.status === "Success") {
           setMenuStallID(response.data.stallID);

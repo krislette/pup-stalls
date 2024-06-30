@@ -10,13 +10,14 @@ function AddSupplier() {
   const navigate = useNavigate();
 
   const createSupplier = (e) => {
-    e.preventDefault(); // Prevents default form submission
+    e.preventDefault();
 
-    Axios.post("http://localhost:3001/suppliers/create", {
-      strSupplierName: supplierName,
-      strContactInformation: contactInformation,
-      strSupplyType: supplyType,
-    })
+    Axios
+      .post("http://localhost:3001/suppliers/create", {
+        strSupplierName: supplierName,
+        strContactInformation: contactInformation,
+        strSupplyType: supplyType,
+      })
       .then((response) => {
         console.log(response);
         if (response.data.status === "Success") {

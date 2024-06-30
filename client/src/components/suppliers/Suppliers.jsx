@@ -6,7 +6,8 @@ function Suppliers() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    Axios.get("http://localhost:3001/suppliers")
+    Axios
+      .get("http://localhost:3001/suppliers")
       .then(res => {
         if (res.data.status === "Success") {
           setData(res.data.result);

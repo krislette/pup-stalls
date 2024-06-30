@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
-import loginimg from "../../assets/PUPLOGOR.png"; // Updated logo import
-import bgImage from "../../assets/PUPM1.jpg"; // Import the new background image
+import loginimg from "../../assets/pup-logo.png";
+import bgImage from "../../assets/pup-m1.jpg";
 
 function LogIn() {
   const [ownerEmail, setEmail] = useState("");
@@ -12,10 +12,11 @@ function LogIn() {
 
   const login = (e) => {
     e.preventDefault();
-    Axios.post("http://localhost:3001/owners/login", {
-      strEmailAddress: ownerEmail,
-      strPassword: ownerPassword,
-    })
+    Axios
+      .post("http://localhost:3001/owners/login", {
+        strEmailAddress: ownerEmail,
+        strPassword: ownerPassword,
+      })
       .then((res) => {
         console.log(res);
         if (res.data.status === "Success") {

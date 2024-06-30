@@ -8,7 +8,8 @@ function Employees() {
   useEffect(() => {
     const ownerID = localStorage.getItem("ownerID");
 
-    Axios.get(`http://localhost:3001/employees/${ownerID}`)
+    Axios
+      .get(`http://localhost:3001/employees/${ownerID}`)
       .then(res => {
         if (res.data.status === "Success") {
           setData(res.data.result);
@@ -21,7 +22,8 @@ function Employees() {
 
   const deleteEmployee = (strEmployeeID) => {
     if (window.confirm("Are you sure you want to delete this employee?")) {
-      Axios.delete(`http://localhost:3001/employees/delete/${strEmployeeID}`)
+      Axios
+        .delete(`http://localhost:3001/employees/delete/${strEmployeeID}`)
         .then(res => {
           if (res.data.status === "Success") {
             // Update the state to remove the deleted employee
@@ -59,7 +61,7 @@ function Employees() {
                   <td>{employee.strEmployeeName}</td>
                   <td>{employee.strPosition}</td>
                   <td>
-                    <Link to={`edit/${employee.strEmployeeID}`} className="btn btn-danger btn-sm me-2">Edit</Link>
+                    <Link to={`edit/${employee.strEmployeeID}`} className="btn btn-success btn-sm me-2">Edit</Link>
                     <button className="btn btn-danger btn-sm" onClick={() => deleteEmployee(employee.strEmployeeID)}>Delete</button>
                   </td>
                 </tr>

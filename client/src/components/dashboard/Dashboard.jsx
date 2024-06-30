@@ -2,9 +2,9 @@ import React from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import {
   BiCategory, BiNetworkChart, BiCart, BiBookOpen, BiBarChartAlt2,
-  BiData, BiGroup, BiHourglass, BiUser // Import the BiUser icon
+  BiData, BiGroup, BiHourglass, BiUser
 } from "react-icons/bi";
-import PUP11 from "../../assets/PUP11.png"; // Updated logo image
+import PUP11 from "../../assets/pup-stalls-logo.png"; 
 
 function Dashboard() {
   const navigate = useNavigate();

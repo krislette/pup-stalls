@@ -54,8 +54,9 @@ function Home() {
     const fetchOwnerName = async () => {
       try {
         const response = await Axios.get(`http://localhost:3001/owners/${ownerID}`);
-        const ownerName = response.data.owner.strOwnerName || "Owner";
-        setWelcomeMessage(`Welcome back, ${ownerName}!`);
+        const ownerFullName = response.data.owner.strOwnerName || "Owner";
+        const firstName = ownerFullName.split(' ')[0];
+        setWelcomeMessage(`Welcome back, ${firstName}!`);
       } catch (error) {
         console.error("Error fetching owner name:", error);
       }

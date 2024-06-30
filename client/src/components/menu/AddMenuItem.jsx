@@ -3,6 +3,8 @@ import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function AddMenuItem() {
+  const [menuItemID, setMenuItemID] = useState("");
+  const [stallID, setStallID] = useState("");
   const [menuItemName, setMenuItemName] = useState("");
   const [description, setDescription] = useState("");
   const [sellingPrice, setSellingPrice] = useState("");
@@ -13,10 +15,11 @@ function AddMenuItem() {
     const ownerID = localStorage.getItem("ownerID");
 
     // Fetch the next menu item ID
-    Axios.get("http://localhost:3001/menu/getID/nextItem")
+    Axios
+      .get("http://localhost:3001/menu/getID/nextItem")
       .then((response) => {
         if (response.data.status === "Success") {
-          // No need to store menuItemID in state, directly use in the form
+          setMenuItemID(response.data.result);
         } else {
           console.log("Error fetching next menu item ID");
         }
@@ -24,10 +27,11 @@ function AddMenuItem() {
       .catch((error) => console.log(error));
 
     // Fetch the stall ID based on owner ID
-    Axios.get(`http://localhost:3001/menu/stalls/${ownerID}`)
+    Axios
+      .get(`http://localhost:3001/menu/stalls/${ownerID}`)
       .then((response) => {
         if (response.data.status === "Success") {
-          // No need to store stallID in state, directly use in the form
+          setStallID(response.data.stallID);
         } else {
           console.log("Error fetching stall ID");
         }
@@ -37,13 +41,14 @@ function AddMenuItem() {
 
   const createMenuItem = (e) => {
     e.preventDefault();
-    Axios.post("http://localhost:3001/menu/create", {
-      // strMenuItemID: menuItemID, // Removed from payload
-      // strStallID: stallID, // Removed from payload
-      strMenuItemName: menuItemName,
-      strDescription: description,
-      decSellingPrice: sellingPrice,
-    })
+    Axios
+      .post("http://localhost:3001/menu/create", {
+        strMenuItemID: menuItemID,
+        strStallID: stallID,
+        strMenuItemName: menuItemName,
+        strDescription: description,
+        decSellingPrice: sellingPrice
+      })
       .then((response) => {
         console.log(response);
         if (response.data.status === "Success") {

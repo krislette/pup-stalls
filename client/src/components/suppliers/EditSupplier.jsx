@@ -11,7 +11,8 @@ function EditSupplier() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    Axios.get(`http://localhost:3001/suppliers/${strSupplierID}`)
+    Axios
+      .get(`http://localhost:3001/suppliers/${strSupplierID}`)
       .then((response) => {
         const supplier = response.data.supplier;
         setSupplierName(supplier.strSupplierName);
@@ -23,11 +24,12 @@ function EditSupplier() {
 
   const updateSupplier = (e) => {
     e.preventDefault();
-    Axios.put(`http://localhost:3001/suppliers/update/${strSupplierID}`, {
-      strSupplierName: supplierName,
-      strContactInformation: contactInformation,
-      strSupplyType: supplyType,
-    })
+    Axios
+      .put(`http://localhost:3001/suppliers/update/${strSupplierID}`, {
+        strSupplierName: supplierName,
+        strContactInformation: contactInformation,
+        strSupplyType: supplyType,
+      })
       .then((response) => {
         console.log(response);
         if (response.data.status === "Success") {

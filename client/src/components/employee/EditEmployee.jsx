@@ -24,15 +24,15 @@ function EditEmployee() {
 
     // Fetch the stall ID based on owner ID
     Axios
-    .get(`http://localhost:3001/items/stalls/${ownerID}`)
-    .then(response => {
-      if (response.data.status === "Success") {
-        setItemStallID(response.data.stallID);
-      } else {
-        console.log("Error fetching stall ID");
-      }
-    })
-    .catch(error => console.log(error));
+      .get(`http://localhost:3001/items/stalls/${ownerID}`)
+      .then(response => {
+        if (response.data.status === "Success") {
+          setItemStallID(response.data.stallID);
+        } else {
+          console.log("Error fetching stall ID");
+        }
+      })
+      .catch(error => console.log(error));
   }, [strEmployeeID]);
 
   const updateEmployee = (e) => {

@@ -3,6 +3,8 @@ import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function AddSalesTransactions() {
+  const [transactionID, setTransactionID] = useState("");
+  const [stallID, setStallID] = useState("");
   const [dateOfTransaction, setDateOfTransaction] = useState("");
   const [itemsSold, setItemsSold] = useState("");
   const [quantity, setQuantity] = useState("");
@@ -18,7 +20,7 @@ function AddSalesTransactions() {
     Axios.get("http://localhost:3001/transactions/getID/nextTransaction")
       .then((response) => {
         if (response.data.status === "Success") {
-          // No need to store transactionID in state, directly use in the form
+          setTransactionID(response.data.result);
         } else {
           console.log("Error fetching next transaction ID");
         }
@@ -29,7 +31,7 @@ function AddSalesTransactions() {
     Axios.get(`http://localhost:3001/transactions/stalls/${ownerID}`)
       .then((response) => {
         if (response.data.status === "Success") {
-          // No need to store stallID in state, directly use in the form
+          setStallID(response.data.stallID);
         } else {
           console.log("Error fetching stall ID");
         }
@@ -40,13 +42,13 @@ function AddSalesTransactions() {
   const create = (e) => {
     e.preventDefault();
     Axios.post("http://localhost:3001/transactions/create", {
-      // strTransactionID: transactionID, // Removed from payload
-      // strStallID: stallID, // Removed from payload
+      strTransactionID: transactionID,
+      strStallID: stallID,
       datDateOfTransaction: dateOfTransaction,
       strItemsSold: itemsSold,
       intQuantity: quantity,
       decTotalPrice: totalPrice,
-      strPaymentMethod: paymentMethod,
+      strPaymentMethod: paymentMethod
     })
       .then((response) => {
         console.log(response);

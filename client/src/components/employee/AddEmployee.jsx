@@ -14,7 +14,8 @@ function AddEmployee() {
     const ownerID = localStorage.getItem("ownerID");
 
     // Fetch the next employee ID
-    Axios.get("http://localhost:3001/employees/getID/nextEmployee")
+    Axios
+      .get("http://localhost:3001/employees/getID/nextEmployee")
       .then((response) => {
         if (response.data.status === "Success") {
           setEmployeeID(response.data.result);
@@ -25,7 +26,8 @@ function AddEmployee() {
       .catch((error) => console.log(error));
 
     // Fetch the stall ID based on owner ID
-    Axios.get(`http://localhost:3001/items/stalls/${ownerID}`)
+    Axios
+      .get(`http://localhost:3001/items/stalls/${ownerID}`)
       .then((response) => {
         if (response.data.status === "Success") {
           setStallID(response.data.stallID);

@@ -15,7 +15,7 @@ function RentHistory() {
         if (response.data.status === "Success") {
           setData(response.data.result);
         } else {
-          alert("Failed to fetch rent history");
+          alert("Failed to fetch rent history from server");
         }
       } catch (error) {
         console.error("Error fetching rent history:", error);

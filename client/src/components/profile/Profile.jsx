@@ -15,7 +15,7 @@ function Profile() {
         if (response.data.status === "Success") {
           setProfileData(response.data.data[0]);
         } else {
-          console.error("Failed to fetch profile data");
+          console.error("Failed to fetch profile data from server");
         }
       } catch (error) {
         console.error("Error fetching profile data:", error);
