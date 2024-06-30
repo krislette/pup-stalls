@@ -68,69 +68,91 @@ function AddFinance() {
   };
 
   return (
-    <div className="d-flex flex-column align-items-center pt-4">
-      <h2>Add Finance Record</h2>
-      <form className="row g-3 w-50">
-        <h1 style={{ fontSize: "15px", textAlign: "center", marginTop: "20px" }}>
-          {registerStatus}
-        </h1>
-        <div className="col-12">
-          <label className="form-label">Enter Computation Date</label>
-          <input
-            type="date"
-            className="form-control"
-            onChange={(e) => setComputationDate(e.target.value)}
-          />
+    <div className="container mt-4">
+      <div className="card shadow">
+        <h2 className="card-header">Add Finance Record</h2>
+        <div className="card-body">
+          <form onSubmit={createFinance}>
+            <table className="table table-bordered">
+              <tbody>
+                <tr>
+                  <th>Finance ID</th>
+                  <td>{financeID}</td>
+                </tr>
+                <tr>
+                  <th>Stall ID</th>
+                  <td>{stallID}</td>
+                </tr>
+                <tr>
+                  <th>Computation Date</th>
+                  <td>
+                    <input
+                      type="date"
+                      className="form-control"
+                      onChange={(e) => setComputationDate(e.target.value)}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <th>Expenses</th>
+                  <td>
+                    <input
+                      type="number"
+                      className="form-control"
+                      placeholder="Enter Expenses"
+                      step="1000"
+                      autoComplete="off"
+                      onChange={(e) => setExpenses(e.target.value)}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <th>Profits</th>
+                  <td>
+                    <input
+                      type="number"
+                      className="form-control"
+                      placeholder="Enter Profits"
+                      step="1000"
+                      autoComplete="off"
+                      onChange={(e) => setProfits(e.target.value)}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <th>Revenue</th>
+                  <td>
+                    <input
+                      type="number"
+                      className="form-control"
+                      placeholder="Enter Revenue"
+                      step="100"
+                      autoComplete="off"
+                      onChange={(e) => setRevenue(e.target.value)}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <th>Expense Category</th>
+                  <td>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Enter Expense Category"
+                      autoComplete="off"
+                      onChange={(e) => setExpenseCategory(e.target.value)}
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <button type="submit" className="btn btn-danger">
+              Add Finance Record
+            </button>
+            {registerStatus && <p className="mt-3">{registerStatus}</p>}
+          </form>
         </div>
-        <div className="col-12">
-          <label className="form-label">Enter Expenses</label>
-          <input
-            type="number"
-            className="form-control"
-            placeholder="Enter Expenses"
-            step="1000"
-            autoComplete="off"
-            onChange={(e) => setExpenses(e.target.value)}
-          />
-        </div>
-        <div className="col-12">
-          <label className="form-label">Enter Profits</label>
-          <input
-            type="number"
-            className="form-control"
-            placeholder="Enter Profits"
-            step="1000"
-            autoComplete="off"
-            onChange={(e) => setProfits(e.target.value)}
-          />
-        </div>
-        <div className="col-12">
-          <label className="form-label">Enter Revenue</label>
-          <input
-            type="number"
-            className="form-control"
-            placeholder="Enter Revenue"
-            step="100"
-            autoComplete="off"
-            onChange={(e) => setRevenue(e.target.value)}
-          />
-        </div>
-        <div className="col-12">
-          <label className="form-label">Enter Expense Category</label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Enter Expense Category"
-            autoComplete="off"
-            onChange={(e) => setExpenseCategory(e.target.value)}
-          />
-        </div>
-        <div className="col-12">
-          <button type="submit" className="btn btn-primary" onClick={createFinance}>
-            Add Finance Record
-          </button>
-        </div>
-      </form>
+      </div>
     </div>
   );
 }

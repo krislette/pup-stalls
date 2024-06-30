@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Axios from "axios";
 
 function Items() {
@@ -8,13 +8,12 @@ function Items() {
   useEffect(() => {
     const ownerID = localStorage.getItem("ownerID");
 
-    Axios
-      .get(`http://localhost:3001/items/${ownerID}`)
+    Axios.get(`http://localhost:3001/items/${ownerID}`)
       .then(res => {
         if (res.data.status === "Success") {
           setData(res.data.result);
         } else {
-          alert("Error");
+          alert("Error fetching items");
         }
       })
       .catch(error => console.log(error));
@@ -37,26 +36,26 @@ function Items() {
   };
 
   return (
-    <div className="px-5 py-3">
-      <div className="d-flex justify-content-center mt-2">
-        <h3>Your Item List</h3>
-      </div>
-      <Link to="/add-item" className="btn btn-dark">Add Item</Link>
-      <div className="mt-3">
-        <table className="table table-hover table-stripped">
-          <thead>
-            <tr>
-              <th>Item ID</th>
-              <th>Item Name</th>
-              <th>Item Type</th>
-              <th>Purchase Price</th>
-              <th>Supplier ID</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((item, index) => {
-              return (
+    <div className="container-fluid">
+      <div className="px-5 py-3">
+        <div className="d-flex justify-content-between align-items-center mb-3">
+          <h3>Your Item List</h3>
+          <Link to="/add-item" className="btn btn-dark">Add Item</Link>
+        </div>
+        <div className="table-responsive">
+          <table className="table table-hover table-striped">
+            <thead className="table-dark">
+              <tr>
+                <th scope="col">Item ID</th>
+                <th scope="col">Item Name</th>
+                <th scope="col">Item Type</th>
+                <th scope="col">Purchase Price</th>
+                <th scope="col">Supplier ID</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((item, index) => (
                 <tr key={index}>
                   <td>{item.strItemID}</td>
                   <td>{item.strItemName}</td>
@@ -65,20 +64,21 @@ function Items() {
                   <td>{item.strSupplierID}</td>
                   <td>
                     <Link to={`edit/${item.strItemID}`} className="btn btn-success btn-sm me-2">Edit</Link>
-                    <button 
-                      className="btn btn-sm btn-danger" 
-                      onClick={() => deleteItem(item.strItemID)}>
-                      Delete
-                    </button>
+                    <button className="btn btn-danger btn-sm" onClick={() => deleteItem(item.strItemID)}>Delete</button>
                   </td>
                 </tr>
-              )
-            })}
-          </tbody>
-        </table>        
+              ))}
+              {data.length === 0 && (
+                <tr>
+                  <td colSpan="6" className="text-center">No items found</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Items;

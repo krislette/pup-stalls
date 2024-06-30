@@ -11,7 +11,7 @@ function Profile() {
       try {
         const ownerID = localStorage.getItem("ownerID");
         const response = await Axios.get(`http://localhost:3001/owners/profile/${ownerID}`);
-        
+
         if (response.data.status === "Success") {
           setProfileData(response.data.data[0]);
         } else {
@@ -26,51 +26,92 @@ function Profile() {
   }, []);
 
   const formatDate = (date) => {
-    if (date) {
-      return format(new Date(date), "yyyy/MM/dd");
-    } else {
-      return "-";
-    }
+    return date ? format(new Date(date), "yyyy/MM/dd") : "-";
   };
 
   return (
     <div className="container mt-4">
       <div className="row">
-        {/* Owner Details */}
         <div className="col-lg-12 mb-4">
           <div className="card">
             <div className="card-body">
               <h2 className="card-title">{profileData.strOwnerName}</h2>
-              <p className="card-text"><strong>Owner ID:</strong> {profileData.strOwnerID}</p>
-              <p className="card-text"><strong>Gender:</strong> {profileData.strGender}</p>
-              <p className="card-text"><strong>Email:</strong> {profileData.strEmailAddress}</p>
-              <p className="card-text"><strong>Mobile:</strong> {profileData.strMobileNumber}</p>
-              <p className="card-text"><strong>Birth Date:</strong> {formatDate(profileData.datBirth)}</p>
+              <table className="table table-bordered">
+                <tbody>
+                  <tr>
+                    <th scope="row">Owner ID</th>
+                    <td>{profileData.strOwnerID}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Gender</th>
+                    <td>{profileData.strGender}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Email</th>
+                    <td>{profileData.strEmailAddress}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Mobile</th>
+                    <td>{profileData.strMobileNumber}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Birth Date</th>
+                    <td>{formatDate(profileData.datBirth)}</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
 
-        {/* Rent Details */}
         <div className="col-lg-6 mb-4">
           <div className="card">
             <div className="card-body">
               <h5 className="card-title">Rent Details</h5>
-              <p className="card-text"><strong>Rent ID:</strong> {profileData.strRentID}</p>
-              <p className="card-text"><strong>Lease Start:</strong> {formatDate(profileData.datLeaseStart)}</p>
-              <p className="card-text"><strong>Lease End:</strong> {formatDate(profileData.datLeaseEnd)}</p>
-              <p className="card-text"><strong>Rent Amount:</strong> ₱{profileData.decRentAmount}</p>
+              <table className="table table-bordered">
+                <tbody>
+                  <tr>
+                    <th scope="row">Rent ID</th>
+                    <td>{profileData.strRentID}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Lease Start</th>
+                    <td>{formatDate(profileData.datLeaseStart)}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Lease End</th>
+                    <td>{formatDate(profileData.datLeaseEnd)}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Rent Amount</th>
+                    <td>₱{profileData.decRentAmount}</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
 
-        {/* Stall Details */}
         <div className="col-lg-6 mb-4">
           <div className="card">
             <div className="card-body">
               <h5 className="card-title">Stall Details</h5>
-              <p className="card-text"><strong>Stall ID:</strong> {profileData.strStallID}</p>
-              <p className="card-text"><strong>Stall Name:</strong> {profileData.strStallName}</p>
-              <p className="card-text"><strong>Stall Type:</strong> {profileData.strStallType}</p>
+              <table className="table table-bordered">
+                <tbody>
+                  <tr>
+                    <th scope="row">Stall ID</th>
+                    <td>{profileData.strStallID}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Stall Name</th>
+                    <td>{profileData.strStallName}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Stall Type</th>
+                    <td>{profileData.strStallType}</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>

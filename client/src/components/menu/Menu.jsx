@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Axios from "axios";
 
 function Menu() {
@@ -8,8 +8,7 @@ function Menu() {
   useEffect(() => {
     const ownerID = localStorage.getItem("ownerID");
 
-    Axios
-      .get(`http://localhost:3001/menu/${ownerID}`)
+    Axios.get(`http://localhost:3001/menu/${ownerID}`)
       .then(res => {
         if (res.data.status === "Success") {
           setData(res.data.result);
@@ -37,42 +36,44 @@ function Menu() {
   };
 
   return (
-    <div className="px-5 py-3">
-      <div className="d-flex justify-content-center mt-2">
-        <h3>Your Menu</h3>
-      </div>
-      <Link to="/add-menu-item" className="btn btn-dark">Add Menu Item</Link>
-      <div className="mt-3">
-        <table className="table table-hover table-stripped">
-          <thead>
-            <tr>
-              <th>Menu Item ID</th>
-              <th>Menu Item Name</th>
-              <th>Description</th>
-              <th>Selling Price</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((item, index) => (
-              <tr key={index}>
-                <td>{item.strMenuItemID}</td>
-                <td>{item.strMenuItemName}</td>
-                <td>{item.strDescription}</td>
-                <td>{item.decSellingPrice}</td>
-                <td>
-                  <Link to={`edit/${item.strMenuItemID}`} className="btn btn-success btn-sm me-2">Edit</Link>
-                  <button
-                    className="btn btn-sm btn-danger"
-                    onClick={() => deleteMenuItem(item.strMenuItemID)}
-                    >
-                    Delete
-                  </button>
-                </td>
+    <div className="container-fluid">
+      <div className="px-5 py-3">
+        <div className="d-flex justify-content-between align-items-center mb-3">
+          <h3>Your Menu</h3>
+          <Link to="/add-menu-item" className="btn btn-dark">Add Menu Item</Link>
+        </div>
+        <div className="table-responsive">
+          <table className="table table-hover table-striped">
+            <thead className="table-dark">
+              <tr>
+                <th scope="col">Menu Item ID</th>
+                <th scope="col">Menu Item Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Selling Price</th>
+                <th scope="col">Action</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {data.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.strMenuItemID}</td>
+                  <td>{item.strMenuItemName}</td>
+                  <td>{item.strDescription}</td>
+                  <td>{item.decSellingPrice}</td>
+                  <td>
+                    <Link to={`edit/${item.strMenuItemID}`} className="btn btn-success btn-sm me-2">Edit</Link>
+                    <button className="btn btn-danger btn-sm" onClick={() => deleteMenuItem(item.strMenuItemID)}>Delete</button>
+                  </td>
+                </tr>
+              ))}
+              {data.length === 0 && (
+                <tr>
+                  <td colSpan="5" className="text-center">No menu items found</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

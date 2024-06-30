@@ -17,8 +17,7 @@ function AddSalesTransactions() {
     const ownerID = localStorage.getItem("ownerID");
 
     // Fetch the next transaction ID
-    Axios
-      .get("http://localhost:3001/transactions/getID/nextTransaction")
+    Axios.get("http://localhost:3001/transactions/getID/nextTransaction")
       .then((response) => {
         if (response.data.status === "Success") {
           setTransactionID(response.data.result);
@@ -29,8 +28,7 @@ function AddSalesTransactions() {
       .catch((error) => console.log(error));
 
     // Fetch the stall ID based on owner ID
-    Axios
-      .get(`http://localhost:3001/transactions/stalls/${ownerID}`)
+    Axios.get(`http://localhost:3001/transactions/stalls/${ownerID}`)
       .then((response) => {
         if (response.data.status === "Success") {
           setStallID(response.data.stallID);
@@ -43,16 +41,15 @@ function AddSalesTransactions() {
 
   const create = (e) => {
     e.preventDefault();
-    Axios
-      .post("http://localhost:3001/transactions/create", {
-        strTransactionID: transactionID,
-        strStallID: stallID,
-        datDateOfTransaction: dateOfTransaction,
-        strItemsSold: itemsSold,
-        intQuantity: quantity,
-        decTotalPrice: totalPrice,
-        strPaymentMethod: paymentMethod,
-      })
+    Axios.post("http://localhost:3001/transactions/create", {
+      strTransactionID: transactionID,
+      strStallID: stallID,
+      datDateOfTransaction: dateOfTransaction,
+      strItemsSold: itemsSold,
+      intQuantity: quantity,
+      decTotalPrice: totalPrice,
+      strPaymentMethod: paymentMethod,
+    })
       .then((response) => {
         console.log(response);
         if (response.data.status === "Success") {
@@ -71,78 +68,90 @@ function AddSalesTransactions() {
   };
 
   return (
-    <div className="d-flex flex-column align-items-center pt-4">
-      <h2>Add Sales and Transaction</h2>
-      <form className="row g-3 w-50">
-        <h1 style={{ fontSize: "15px", textAlign: "center", marginTop: "20px" }}>
-          {registerStatus}
-        </h1>
-        <div className="col-12">
-          <label className="form-label">Enter Date of Transaction</label>
-          <input
-            type="date"
-            className="form-control"
-            autoComplete="off"
-            onChange={(e) => {
-              setDateOfTransaction(e.target.value);
-            }}
-          />
+    <div className="container mt-4">
+      <div className="card shadow">
+        <h2 className="card-header">Add Sales and Transaction</h2>
+        <div className="card-body">
+          <form onSubmit={create}>
+            <table className="table table-bordered">
+              <tbody>
+                <tr>
+                  <th>Transaction ID</th>
+                  <td>{transactionID}</td>
+                </tr>
+                <tr>
+                  <th>Stall ID</th>
+                  <td>{stallID}</td>
+                </tr>
+                <tr>
+                  <th>Date of Transaction</th>
+                  <td>
+                    <input
+                      type="date"
+                      className="form-control"
+                      autoComplete="off"
+                      onChange={(e) => setDateOfTransaction(e.target.value)}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <th>Items Sold</th>
+                  <td>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Enter Item Sold Name"
+                      autoComplete="off"
+                      onChange={(e) => setItemsSold(e.target.value)}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <th>Quantity</th>
+                  <td>
+                    <input
+                      type="number"
+                      className="form-control"
+                      placeholder="Enter Quantity"
+                      autoComplete="off"
+                      onChange={(e) => setQuantity(e.target.value)}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <th>Total Price</th>
+                  <td>
+                    <input
+                      type="number"
+                      className="form-control"
+                      placeholder="Enter Total Price"
+                      step="0.01"
+                      autoComplete="off"
+                      onChange={(e) => setTotalPrice(e.target.value)}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <th>Payment Method</th>
+                  <td>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Enter Payment Method"
+                      autoComplete="off"
+                      onChange={(e) => setPaymentMethod(e.target.value)}
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <button type="submit" className="btn btn-danger">
+              Add Sales and Transaction
+            </button>
+            {registerStatus && <p className="mt-3">{registerStatus}</p>}
+          </form>
         </div>
-        <div className="col-12">
-          <label className="form-label">Enter Item Sold Name</label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Enter Item Sold Name"
-            autoComplete="off"
-            onChange={(e) => {
-              setItemsSold(e.target.value);
-            }}
-          />
-        </div>
-        <div className="col-12">
-          <label className="form-label">Enter Quantity</label>
-          <input
-            type="number"
-            className="form-control"
-            placeholder="Enter Quantity"
-            autoComplete="off"
-            onChange={(e) => {
-              setQuantity(e.target.value);
-            }}
-          />
-        </div>
-        <div className="col-12">
-          <label className="form-label">Enter Total Price</label>
-          <input
-            type="number"
-            className="form-control"
-            placeholder="Enter Total Price"
-            step="0.01"
-            autoComplete="off"
-            onChange={(e) => {
-              setTotalPrice(e.target.value);
-            }}
-          />
-        </div>
-        <div className="col-12">
-          <label className="form-label">Enter Payment Method</label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Enter Payment Method"
-            autoComplete="off"
-            onChange={(e) => {
-              setPaymentMethod(e.target.value);
-            }}
-          />
-        </div>
-        <div className="col-12">
-          <button type="submit" className="btn btn-primary" onClick={create}>
-            Add Sales and Transaction
-          </button>
-        </div>
-      </form>
+      </div>
     </div>
   );
 }
