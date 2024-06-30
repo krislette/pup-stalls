@@ -3,8 +3,6 @@ import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function AddSalesTransactions() {
-  const [transactionID, setTransactionID] = useState("");
-  const [stallID, setStallID] = useState("");
   const [dateOfTransaction, setDateOfTransaction] = useState("");
   const [itemsSold, setItemsSold] = useState("");
   const [quantity, setQuantity] = useState("");
@@ -20,7 +18,7 @@ function AddSalesTransactions() {
     Axios.get("http://localhost:3001/transactions/getID/nextTransaction")
       .then((response) => {
         if (response.data.status === "Success") {
-          setTransactionID(response.data.result);
+          // No need to store transactionID in state, directly use in the form
         } else {
           console.log("Error fetching next transaction ID");
         }
@@ -31,7 +29,7 @@ function AddSalesTransactions() {
     Axios.get(`http://localhost:3001/transactions/stalls/${ownerID}`)
       .then((response) => {
         if (response.data.status === "Success") {
-          setStallID(response.data.stallID);
+          // No need to store stallID in state, directly use in the form
         } else {
           console.log("Error fetching stall ID");
         }
@@ -42,8 +40,8 @@ function AddSalesTransactions() {
   const create = (e) => {
     e.preventDefault();
     Axios.post("http://localhost:3001/transactions/create", {
-      strTransactionID: transactionID,
-      strStallID: stallID,
+      // strTransactionID: transactionID, // Removed from payload
+      // strStallID: stallID, // Removed from payload
       datDateOfTransaction: dateOfTransaction,
       strItemsSold: itemsSold,
       intQuantity: quantity,
@@ -75,14 +73,7 @@ function AddSalesTransactions() {
           <form onSubmit={create}>
             <table className="table table-bordered">
               <tbody>
-                <tr>
-                  <th>Transaction ID</th>
-                  <td>{transactionID}</td>
-                </tr>
-                <tr>
-                  <th>Stall ID</th>
-                  <td>{stallID}</td>
-                </tr>
+                {/* Date of Transaction */}
                 <tr>
                   <th>Date of Transaction</th>
                   <td>
@@ -94,6 +85,8 @@ function AddSalesTransactions() {
                     />
                   </td>
                 </tr>
+
+                {/* Items Sold */}
                 <tr>
                   <th>Items Sold</th>
                   <td>
@@ -106,6 +99,8 @@ function AddSalesTransactions() {
                     />
                   </td>
                 </tr>
+
+                {/* Quantity */}
                 <tr>
                   <th>Quantity</th>
                   <td>
@@ -118,6 +113,8 @@ function AddSalesTransactions() {
                     />
                   </td>
                 </tr>
+
+                {/* Total Price */}
                 <tr>
                   <th>Total Price</th>
                   <td>
@@ -131,6 +128,8 @@ function AddSalesTransactions() {
                     />
                   </td>
                 </tr>
+
+                {/* Payment Method */}
                 <tr>
                   <th>Payment Method</th>
                   <td>

@@ -19,24 +19,26 @@ function Dashboard() {
 
   return (
     <div className="container-fluid">
-      <div className="row flex-nowrap">
+      <div className="row">
         <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0" style={{
           backgroundColor: '#2e2e2e', // Dark gray background
           borderRadius: '10px', // Rounded corners
           boxShadow: '0 8px 16px rgba(0,0,0,0.4)', // Shadow effect
           padding: '1rem', // Padding for visual appeal
           margin: '0.5rem', // Margin to ensure it doesn't touch screen edges
+          maxHeight: '100vh', // Limit maximum height to viewport height
+          overflowY: 'auto', // Enable vertical scroll if content exceeds height
           flexShrink: 0 // Prevent the panel from shrinking when zooming
         }}>
-          <div className="d-flex flex-column align-items-start px-3 pt-2 text-white min-vh-100">
-            <Link to="/" className="d-flex align-items-center pb-3 mb-md-1 mt-md-3 me-md-auto text-white text-decoration-none">
+          <div className="d-flex flex-column align-items-start px-3 pt-2 text-white">
+            <Link to="/" className="d-flex align-items-center pb-3 mb-3 me-auto text-white text-decoration-none">
               <img src={PUP11} alt="Logo" className="img-fluid me-3" style={{ height: "4rem" }} /> {/* Larger logo size */}
               <span className="fs-5 fw-bolder d-none d-sm-inline">
                 Stall Dashboard {/* Renamed from PUPStols */}
               </span>
             </Link>
             <div className="mb-3 text-white fw-bold small">Main Menu</div>
-            <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start" id="menu">
+            <ul className="nav nav-pills flex-column mb-auto align-items-start" id="menu">
               {/* Menu items with hover effect */}
               {[
                 { to: "/", icon: <BiCategory />, label: "Dashboard" },
@@ -49,16 +51,16 @@ function Dashboard() {
                 { to: "/rents", icon: <BiHourglass />, label: "Rent History" },
                 { to: "/profile", icon: <BiUser />, label: "Profile" }, // Added Profile menu item
               ].map((item, index) => (
-                <li key={index} style={{ marginBottom: '0.5rem', width: '100%', borderBottom: '1px solid rgba(255, 255, 255, 0.1)' }}>
-                  <Link to={item.to} className="nav-link text-white px-0 align-middle d-flex align-items-center" style={{ padding: '0.5rem 1rem', width: '100%', paddingLeft: '2rem' }}>
+                <li key={index} style={{ marginBottom: '0.5rem', borderBottom: '1px solid rgba(255, 255, 255, 0.1)' }}>
+                  <Link to={item.to} className="nav-link text-white px-0 align-middle d-flex align-items-center" style={{ padding: '0.5rem 1rem' }}>
                     {item.icon}
                     <span className="ms-1 d-none d-sm-inline">{item.label}</span>
                   </Link>
                 </li>
               ))}
             </ul>
-            <div className="mt-auto d-flex justify-content-center w-100">
-              <button type="button" className="btn btn-outline-light rounded-pill mb-3" style={{ width: '100%' }} onClick={signOut}>Sign Out</button>
+            <div className="mt-2 mb-3 d-flex justify-content-center w-100"> {/* Adjusted margin top */}
+              <button type="button" className="btn btn-outline-light rounded-pill" style={{ width: '100%' }} onClick={signOut}>Sign Out</button>
             </div>
           </div>
         </div>

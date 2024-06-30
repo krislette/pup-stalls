@@ -3,8 +3,6 @@ import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function AddFinance() {
-  const [financeID, setFinanceID] = useState("");
-  const [stallID, setStallID] = useState("");
   const [computationDate, setComputationDate] = useState("");
   const [expenses, setExpenses] = useState("");
   const [profits, setProfits] = useState("");
@@ -20,7 +18,7 @@ function AddFinance() {
     Axios.get("http://localhost:3001/finances/getID/nextFinance")
       .then((response) => {
         if (response.data.status === "Success") {
-          setFinanceID(response.data.result);
+          // No need to store financeID in state, directly use in the form
         } else {
           console.log("Error fetching next finance ID");
         }
@@ -31,7 +29,7 @@ function AddFinance() {
     Axios.get(`http://localhost:3001/finances/stalls/${ownerID}`)
       .then((response) => {
         if (response.data.status === "Success") {
-          setStallID(response.data.stallID);
+          // No need to store stallID in state, directly use in the form
         } else {
           console.log("Error fetching stall ID");
         }
@@ -42,8 +40,8 @@ function AddFinance() {
   const createFinance = (e) => {
     e.preventDefault();
     Axios.post("http://localhost:3001/finances/create", {
-      strFinanceID: financeID,
-      strStallID: stallID,
+      // strFinanceID: financeID, // Removed from payload
+      // strStallID: stallID, // Removed from payload
       datComputationDate: computationDate,
       decExpenses: expenses,
       decProfits: profits,
@@ -75,14 +73,7 @@ function AddFinance() {
           <form onSubmit={createFinance}>
             <table className="table table-bordered">
               <tbody>
-                <tr>
-                  <th>Finance ID</th>
-                  <td>{financeID}</td>
-                </tr>
-                <tr>
-                  <th>Stall ID</th>
-                  <td>{stallID}</td>
-                </tr>
+                {/* Computation Date */}
                 <tr>
                   <th>Computation Date</th>
                   <td>
@@ -93,6 +84,8 @@ function AddFinance() {
                     />
                   </td>
                 </tr>
+
+                {/* Expenses */}
                 <tr>
                   <th>Expenses</th>
                   <td>
@@ -106,6 +99,8 @@ function AddFinance() {
                     />
                   </td>
                 </tr>
+
+                {/* Profits */}
                 <tr>
                   <th>Profits</th>
                   <td>
@@ -119,6 +114,8 @@ function AddFinance() {
                     />
                   </td>
                 </tr>
+
+                {/* Revenue */}
                 <tr>
                   <th>Revenue</th>
                   <td>
@@ -132,6 +129,8 @@ function AddFinance() {
                     />
                   </td>
                 </tr>
+
+                {/* Expense Category */}
                 <tr>
                   <th>Expense Category</th>
                   <td>

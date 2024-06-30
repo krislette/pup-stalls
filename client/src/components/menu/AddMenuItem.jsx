@@ -3,8 +3,6 @@ import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function AddMenuItem() {
-  const [menuItemID, setMenuItemID] = useState("");
-  const [stallID, setStallID] = useState("");
   const [menuItemName, setMenuItemName] = useState("");
   const [description, setDescription] = useState("");
   const [sellingPrice, setSellingPrice] = useState("");
@@ -18,7 +16,7 @@ function AddMenuItem() {
     Axios.get("http://localhost:3001/menu/getID/nextItem")
       .then((response) => {
         if (response.data.status === "Success") {
-          setMenuItemID(response.data.result);
+          // No need to store menuItemID in state, directly use in the form
         } else {
           console.log("Error fetching next menu item ID");
         }
@@ -29,7 +27,7 @@ function AddMenuItem() {
     Axios.get(`http://localhost:3001/menu/stalls/${ownerID}`)
       .then((response) => {
         if (response.data.status === "Success") {
-          setStallID(response.data.stallID);
+          // No need to store stallID in state, directly use in the form
         } else {
           console.log("Error fetching stall ID");
         }
@@ -40,8 +38,8 @@ function AddMenuItem() {
   const createMenuItem = (e) => {
     e.preventDefault();
     Axios.post("http://localhost:3001/menu/create", {
-      strMenuItemID: menuItemID,
-      strStallID: stallID,
+      // strMenuItemID: menuItemID, // Removed from payload
+      // strStallID: stallID, // Removed from payload
       strMenuItemName: menuItemName,
       strDescription: description,
       decSellingPrice: sellingPrice,
@@ -71,14 +69,7 @@ function AddMenuItem() {
           <form onSubmit={createMenuItem}>
             <table className="table table-bordered">
               <tbody>
-                <tr>
-                  <th>Menu Item ID</th>
-                  <td>{menuItemID}</td>
-                </tr>
-                <tr>
-                  <th>Stall ID</th>
-                  <td>{stallID}</td>
-                </tr>
+                {/* Menu Item Name */}
                 <tr>
                   <th>Menu Item Name</th>
                   <td>
@@ -92,6 +83,8 @@ function AddMenuItem() {
                     />
                   </td>
                 </tr>
+
+                {/* Description */}
                 <tr>
                   <th>Description</th>
                   <td>
@@ -105,6 +98,8 @@ function AddMenuItem() {
                     />
                   </td>
                 </tr>
+
+                {/* Selling Price */}
                 <tr>
                   <th>Selling Price</th>
                   <td>

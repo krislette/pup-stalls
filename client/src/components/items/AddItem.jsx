@@ -3,8 +3,6 @@ import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function AddItem() {
-  const [itemID, setItemID] = useState("");
-  const [stallID, setStallID] = useState("");
   const [itemName, setItemName] = useState("");
   const [itemType, setItemType] = useState("");
   const [itemPurchasePrice, setItemPurchasePrice] = useState("");
@@ -19,7 +17,7 @@ function AddItem() {
     Axios.get("http://localhost:3001/items/getID/nextItem")
       .then((response) => {
         if (response.data.status === "Success") {
-          setItemID(response.data.result);
+          // No need to store itemID in state, directly use in the form
         } else {
           console.log("Error fetching next item ID");
         }
@@ -30,7 +28,7 @@ function AddItem() {
     Axios.get(`http://localhost:3001/items/stalls/${ownerID}`)
       .then((response) => {
         if (response.data.status === "Success") {
-          setStallID(response.data.stallID);
+          // No need to store stallID in state, directly use in the form
         } else {
           console.log("Error fetching stall ID");
         }
@@ -41,8 +39,6 @@ function AddItem() {
   const create = (e) => {
     e.preventDefault();
     Axios.post("http://localhost:3001/items/create", {
-      strItemID: itemID,
-      strStallID: stallID,
       strItemName: itemName,
       strItemType: itemType,
       decPurchasePrice: itemPurchasePrice,
@@ -73,14 +69,7 @@ function AddItem() {
           <form onSubmit={create}>
             <table className="table table-bordered">
               <tbody>
-                <tr>
-                  <th>Item ID</th>
-                  <td>{itemID}</td>
-                </tr>
-                <tr>
-                  <th>Stall ID</th>
-                  <td>{stallID}</td>
-                </tr>
+                {/* Item Name */}
                 <tr>
                   <th>Item Name</th>
                   <td>
@@ -94,6 +83,8 @@ function AddItem() {
                     />
                   </td>
                 </tr>
+
+                {/* Item Type */}
                 <tr>
                   <th>Item Type</th>
                   <td>
@@ -107,6 +98,8 @@ function AddItem() {
                     />
                   </td>
                 </tr>
+
+                {/* Purchase Price */}
                 <tr>
                   <th>Purchase Price</th>
                   <td>
@@ -121,6 +114,8 @@ function AddItem() {
                     />
                   </td>
                 </tr>
+
+                {/* Supplier ID */}
                 <tr>
                   <th>Supplier ID</th>
                   <td>
