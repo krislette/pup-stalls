@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Axios from "axios";
 
 function Employees() {
@@ -8,8 +8,7 @@ function Employees() {
   useEffect(() => {
     const ownerID = localStorage.getItem("ownerID");
 
-    Axios
-      .get(`http://localhost:3001/employees/${ownerID}`)
+    Axios.get(`http://localhost:3001/employees/${ownerID}`)
       .then(res => {
         if (res.data.status === "Success") {
           setData(res.data.result);
@@ -37,44 +36,45 @@ function Employees() {
   };
 
   return (
-    <div className="px-5 py-3">
-      <div className="d-flex justify-content-center mt-2">
-        <h3>Your Employee List</h3>
-      </div>
-      <Link to="/add-employee" className="btn btn-dark">Add Employee</Link>
-      <div className="mt-3">
-        <table className="table table-hover table-stripped">
-          <thead>
-            <tr>
-              <th>Employee ID</th>
-              <th>Employee Name</th>
-              <th>Position</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((employee, index) => {
-              return (
+    <div className="container-fluid">
+      <div className="px-5 py-3">
+        <div className="d-flex justify-content-between align-items-center mb-3">
+          <h3>Your Employee List</h3>
+          <Link to="/add-employee" className="btn btn-dark">Add Employee</Link>
+        </div>
+        <div className="table-responsive">
+          <table className="table table-hover table-striped">
+            <thead className="table-dark">
+              <tr>
+                <th scope="col">Employee ID</th>
+                <th scope="col">Employee Name</th>
+                <th scope="col">Position</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((employee, index) => (
                 <tr key={index}>
                   <td>{employee.strEmployeeID}</td>
                   <td>{employee.strEmployeeName}</td>
                   <td>{employee.strPosition}</td>
                   <td>
-                    <Link to={`edit/${employee.strEmployeeID}`} className="btn btn-success btn-sm me-2">Edit</Link>
-                    <button 
-                      className="btn btn-sm btn-danger" 
-                      onClick={() => deleteEmployee(employee.strEmployeeID)}>
-                      Delete
-                    </button>
+                    <Link to={`edit/${employee.strEmployeeID}`} className="btn btn-danger btn-sm me-2">Edit</Link>
+                    <button className="btn btn-danger btn-sm" onClick={() => deleteEmployee(employee.strEmployeeID)}>Delete</button>
                   </td>
                 </tr>
-              )
-            })}
-          </tbody>
-        </table>        
+              ))}
+              {data.length === 0 && (
+                <tr>
+                  <td colSpan="4" className="text-center">No employees found</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Employees;

@@ -1,6 +1,6 @@
-import signupLogo from "../../assets/signup.png";
-import { useState } from "react";
+import React, { useState } from "react";
 import Axios from "axios";
+import bgImage from "../../assets/PUPLagoon.jpg"; // Import the new background image
 
 function SignUp() {
   const [ownerID, setOwnerID] = useState("");
@@ -60,175 +60,199 @@ function SignUp() {
   };
 
   return (
-    <div className="container" style={{ paddingTop: 60 }}>
-      <div className="container-fluid h-custom">
+    <div
+      style={{
+        backgroundImage: `url(${bgImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        minHeight: "100vh",
+        padding: "60px 0",
+        position: "relative",
+      }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundColor: "rgba(255, 255, 255, 0.3)", // Adjusted opacity for less intense blur
+          backdropFilter: "blur(5px)", // Increased blur effect
+        }}
+      ></div>
+      <div className="container" style={{ position: "relative" }}>
         <div className="row d-flex justify-content-center align-items-center h-100">
-          <div className="col-md-8 col-lg-6 col-x1-4 offset-x1-1">
-            <form onSubmit={register}>
-              {/* Owner fields */}
-              <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-                <p className="lead fw-normal mb-0 me-3">Create Your Account</p>
-              </div>
-              <div className="form-outline mb-4">
-                <input
-                  type="text"
-                  className="form-control form-control-lg"
-                  placeholder="Enter Your Owner ID"
-                  required
-                  value={ownerID}
-                  onChange={(e) => setOwnerID(e.target.value)}
-                />
-                <label className="form-label">Owner ID</label>
-              </div>
-              <div className="form-outline mb-4">
-                <input
-                  type="text"
-                  className="form-control form-control-lg"
-                  placeholder="Enter Your Name"
-                  required
-                  value={ownerName}
-                  onChange={(e) => setOwnerName(e.target.value)}
-                />
-                <label className="form-label">Owner Name</label>
-              </div>
-              <div className="form-outline mb-4">
-                <input
-                  type="text"
-                  className="form-control form-control-lg"
-                  placeholder="Enter Landline Number"
-                  value={ownerLandline}
-                  onChange={(e) => setOwnerLandline(e.target.value)}
-                />
-                <label className="form-label">Landline Number</label>
-              </div>
-              <div className="form-outline mb-4">
-                <input
-                  type="text"
-                  className="form-control form-control-lg"
-                  placeholder="Enter Mobile Number"
-                  required
-                  value={ownerMobile}
-                  onChange={(e) => setOwnerMobile(e.target.value)}
-                />
-                <label className="form-label">Mobile Number</label>
-              </div>
-              <div className="form-outline mb-4">
-                <input
-                  type="email"
-                  className="form-control form-control-lg"
-                  placeholder="Enter Email Address"
-                  required
-                  value={ownerEmail}
-                  onChange={(e) => setOwnerEmail(e.target.value)}
-                />
-                <label className="form-label">Email Address</label>
-              </div>
-              <div className="form-outline mb-4">
-                <input
-                  type="date"
-                  className="form-control form-control-lg"
-                  required
-                  value={ownerBirth}
-                  onChange={(e) => setOwnerBirth(e.target.value)}
-                />
-                <label className="form-label">Date of Birth</label>
-              </div>
-              <div className="form-outline mb-4">
-                <select
-                  className="form-control form-control-lg"
-                  value={ownerGender}
-                  onChange={(e) => setOwnerGender(e.target.value)}
-                >
-                  <option value=""></option>
-                  <option value="F">F</option>
-                  <option value="M">M</option>
-                </select>
-                <label className="form-label">Gender</label>
-              </div>
-              <div className="form-outline mb-4">
-                <input
-                  type="password"
-                  className="form-control form-control-lg"
-                  placeholder="Enter Password"
-                  required
-                  value={ownerPassword}
-                  onChange={(e) => setOwnerPassword(e.target.value)}
-                />
-                <label className="form-label">Password</label>
-              </div>
-
-              <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-                <p className="lead fw-normal mb-0 me-3">Stall Information</p>
-              </div>
-              {/* Stall fields */}
-              <div className="form-outline mb-4">
-                <input
-                  type="text"
-                  className="form-control form-control-lg"
-                  placeholder="Enter Stall Name"
-                  required
-                  value={stallName}
-                  onChange={(e) => setStallName(e.target.value)}
-                />
-                <label className="form-label">Stall Name</label>
-              </div>
-              <div className="form-outline mb-4">
-                <input
-                  type="text"
-                  className="form-control form-control-lg"
-                  placeholder="Enter Stall Type"
-                  required
-                  value={stallType}
-                  onChange={(e) => setStallType(e.target.value)}
-                />
-                <label className="form-label">Stall Type</label>
-              </div>
-
-              <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-                <p className="lead fw-normal mb-0 me-3">Rent Information</p>
-              </div>
-              {/* Rent fields */}
-              <div className="form-outline mb-4">
-                <input
-                  type="date"
-                  className="form-control form-control-lg"
-                  required
-                  value={leaseStart}
-                  onChange={(e) => setLeaseStart(e.target.value)}
-                />
-                <label className="form-label">Lease Start Date</label>
-              </div>
-              <div className="form-outline mb-4">
-                <input
-                  type="date"
-                  className="form-control form-control-lg"
-                  required
-                  value={leaseEnd}
-                  onChange={(e) => setLeaseEnd(e.target.value)}
-                />
-                <label className="form-label">Lease End Date</label>
-              </div>
-
-              {/* Remember me and forgot password */}
-              <div className="d-flex justify-content-between align-items-center">
-                <div className="form-check mb-0">
-                  <input className="form-check-input me-2" type="checkbox" value="" />
-                  <label className="form-check-label">Remember me</label>
+          {/* First Section */}
+          <div className="col-md-8 col-lg-6 col-xl-6 mb-5">
+            <div className="bg-white p-4 rounded shadow-lg">
+              <form onSubmit={register}>
+                {/* Owner fields */}
+                <div className="form-outline mb-4">
+                  <label htmlFor="ownerID">Enter Your Owner ID</label>
+                  <input
+                    type="text"
+                    id="ownerID"
+                    className="form-control form-control-lg"
+                    placeholder="Owner ID"
+                    required
+                    value={ownerID}
+                    onChange={(e) => setOwnerID(e.target.value)}
+                  />
                 </div>
-                <a href="#" className="text-body">Forgot password?</a>
-              </div>
-
-              {/* Sign up button and link to login */}
-              <div className="text-center text-lg-start mt-4 pt-2">
-                <button type="submit" className="btn btn-primary btn-lg">Sign Up</button>
-                <p className="small fw-bold mt-2 pt-1 mb-0">
-                  Login to your account <a href="login" className="link-danger">Login</a>
-                </p>
-              </div>
-            </form>
+                <div className="form-outline mb-4">
+                  <label htmlFor="ownerName">Enter Your Name</label>
+                  <input
+                    type="text"
+                    id="ownerName"
+                    className="form-control form-control-lg"
+                    placeholder="Owner Name"
+                    required
+                    value={ownerName}
+                    onChange={(e) => setOwnerName(e.target.value)}
+                  />
+                </div>
+                <div className="form-outline mb-4">
+                  <label htmlFor="ownerLandline">Enter Landline Number</label>
+                  <input
+                    type="text"
+                    id="ownerLandline"
+                    className="form-control form-control-lg"
+                    placeholder="Landline Number"
+                    value={ownerLandline}
+                    onChange={(e) => setOwnerLandline(e.target.value)}
+                  />
+                </div>
+                <div className="form-outline mb-4">
+                  <label htmlFor="ownerMobile">Enter Mobile Number</label>
+                  <input
+                    type="text"
+                    id="ownerMobile"
+                    className="form-control form-control-lg"
+                    placeholder="Mobile Number"
+                    required
+                    value={ownerMobile}
+                    onChange={(e) => setOwnerMobile(e.target.value)}
+                  />
+                </div>
+                <div className="form-outline mb-4">
+                  <label htmlFor="ownerEmail">Enter Email Address</label>
+                  <input
+                    type="email"
+                    id="ownerEmail"
+                    className="form-control form-control-lg"
+                    placeholder="Email Address"
+                    required
+                    value={ownerEmail}
+                    onChange={(e) => setOwnerEmail(e.target.value)}
+                  />
+                </div>
+                <div className="form-outline mb-4">
+                  <label htmlFor="ownerBirth">Date of Birth</label>
+                  <input
+                    type="date"
+                    id="ownerBirth"
+                    className="form-control form-control-lg"
+                    required
+                    value={ownerBirth}
+                    onChange={(e) => setOwnerBirth(e.target.value)}
+                  />
+                </div>
+              </form>
+            </div>
           </div>
-          <div className="col-md-9 col-lg-6 col-x1-5">
-            <img src={signupLogo} className="img-fluid" alt="Signup" />
+
+          {/* Second Section */}
+          <div className="col-md-8 col-lg-6 col-xl-6">
+            <div className="bg-white p-4 rounded shadow-lg">
+              <form onSubmit={register}>
+                <div className="form-outline mb-4">
+                  <label htmlFor="ownerGender">Gender</label>
+                  <select
+                    id="ownerGender"
+                    className="form-control form-control-lg"
+                    value={ownerGender}
+                    onChange={(e) => setOwnerGender(e.target.value)}
+                  >
+                    <option value=""></option>
+                    <option value="F">Female</option>
+                    <option value="M">Male</option>
+                  </select>
+                </div>
+                <div className="form-outline mb-4">
+                  <label htmlFor="ownerPassword">Enter Password</label>
+                  <input
+                    type="password"
+                    id="ownerPassword"
+                    className="form-control form-control-lg"
+                    placeholder="Password"
+                    required
+                    value={ownerPassword}
+                    onChange={(e) => setOwnerPassword(e.target.value)}
+                  />
+                </div>
+                <div className="form-outline mb-4">
+                  <label htmlFor="stallName">Enter Stall Name</label>
+                  <input
+                    type="text"
+                    id="stallName"
+                    className="form-control form-control-lg"
+                    placeholder="Stall Name"
+                    required
+                    value={stallName}
+                    onChange={(e) => setStallName(e.target.value)}
+                  />
+                </div>
+                <div className="form-outline mb-4">
+                  <label htmlFor="stallType">Enter Stall Type</label>
+                  <input
+                    type="text"
+                    id="stallType"
+                    className="form-control form-control-lg"
+                    placeholder="Stall Type"
+                    required
+                    value={stallType}
+                    onChange={(e) => setStallType(e.target.value)}
+                  />
+                </div>
+                <div className="form-outline mb-4">
+                  <label htmlFor="leaseStart">Lease Start Date</label>
+                  <input
+                    type="date"
+                    id="leaseStart"
+                    className="form-control form-control-lg"
+                    required
+                    value={leaseStart}
+                    onChange={(e) => setLeaseStart(e.target.value)}
+                  />
+                </div>
+                <div className="form-outline mb-4">
+                  <label htmlFor="leaseEnd">Lease End Date</label>
+                  <input
+                    type="date"
+                    id="leaseEnd"
+                    className="form-control form-control-lg"
+                    required
+                    value={leaseEnd}
+                    onChange={(e) => setLeaseEnd(e.target.value)}
+                  />
+                </div>
+
+                {/* Remember me and forgot password */}
+                <div className="d-flex justify-content-between align-items-center mb-4">
+                  <div className="form-check mb-0">
+                    <input className="form-check-input me-2" type="checkbox" value="" id="rememberMe" />
+                    <label className="form-check-label" htmlFor="rememberMe">Remember me</label>
+                  </div>
+                  <a href="#" className="text-danger">Forgot password?</a>
+                </div>
+
+                {/* Sign up button */}
+                <div className="text-center mt-4">
+                  <button type="submit" className="btn btn-danger btn-lg">Sign Up</button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>

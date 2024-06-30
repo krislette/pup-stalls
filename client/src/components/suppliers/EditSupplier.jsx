@@ -11,8 +11,7 @@ function EditSupplier() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    Axios
-      .get(`http://localhost:3001/suppliers/${strSupplierID}`)
+    Axios.get(`http://localhost:3001/suppliers/${strSupplierID}`)
       .then((response) => {
         const supplier = response.data.supplier;
         setSupplierName(supplier.strSupplierName);
@@ -24,12 +23,11 @@ function EditSupplier() {
 
   const updateSupplier = (e) => {
     e.preventDefault();
-    Axios
-      .put(`http://localhost:3001/suppliers/update/${strSupplierID}`, {
-        strSupplierName: supplierName,
-        strContactInformation: contactInformation,
-        strSupplyType: supplyType,
-      })
+    Axios.put(`http://localhost:3001/suppliers/update/${strSupplierID}`, {
+      strSupplierName: supplierName,
+      strContactInformation: contactInformation,
+      strSupplyType: supplyType,
+    })
       .then((response) => {
         console.log(response);
         if (response.data.status === "Success") {
@@ -44,51 +42,50 @@ function EditSupplier() {
   };
 
   return (
-    <div className="d-flex flex-column align-items-center pt-4">
-      <h2>Edit Supplier</h2>
-      <form className="row g-3 w-50" onSubmit={updateSupplier}>
-        <h1 style={{ fontSize: "15px", textAlign: "center", marginTop: "20px" }}>
-          {updateStatus}
-        </h1>
-        <div className="col-12">
-          <label className="form-label">Enter Supplier Name</label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Enter Supplier Name"
-            autoComplete="off"
-            value={supplierName}
-            onChange={(e) => setSupplierName(e.target.value)}
-          />
-        </div>
-        <div className="col-12">
-          <label className="form-label">Enter Contact Information</label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Enter Contact Information"
-            autoComplete="off"
-            value={contactInformation}
-            onChange={(e) => setContactInformation(e.target.value)}
-          />
-        </div>
-        <div className="col-12">
-          <label className="form-label">Enter Supply Type</label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Enter Supply Type"
-            autoComplete="off"
-            value={supplyType}
-            onChange={(e) => setSupplyType(e.target.value)}
-          />
-        </div>
-        <div className="col-12">
-          <button type="submit" className="btn btn-primary">
-            Update
-          </button>
-        </div>
-      </form>
+    <div className="container mt-4">
+      <div className="card shadow-squircle p-4">
+        <h2>Edit Supplier</h2>
+        <form onSubmit={updateSupplier}>
+          <div className="mb-3">
+            <label htmlFor="supplierName" className="form-label">Supplier Name</label>
+            <input
+              type="text"
+              className="form-control"
+              id="supplierName"
+              placeholder="Enter Supplier Name"
+              autoComplete="off"
+              value={supplierName}
+              onChange={(e) => setSupplierName(e.target.value)}
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="contactInfo" className="form-label">Contact Information</label>
+            <input
+              type="text"
+              className="form-control"
+              id="contactInfo"
+              placeholder="Enter Contact Information"
+              autoComplete="off"
+              value={contactInformation}
+              onChange={(e) => setContactInformation(e.target.value)}
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="supplyType" className="form-label">Supply Type</label>
+            <input
+              type="text"
+              className="form-control"
+              id="supplyType"
+              placeholder="Enter Supply Type"
+              autoComplete="off"
+              value={supplyType}
+              onChange={(e) => setSupplyType(e.target.value)}
+            />
+          </div>
+          <button type="submit" className="btn btn-danger">Update</button>
+          {updateStatus && <p className="mt-3">{updateStatus}</p>}
+        </form>
+      </div>
     </div>
   );
 }

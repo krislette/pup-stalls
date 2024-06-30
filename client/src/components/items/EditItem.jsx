@@ -113,7 +113,7 @@ function EditItem() {
           />
         </div>
         <div className="col-12">
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-danger">
             Update
           </button>
         </div>

@@ -11,87 +11,94 @@ function Home() {
   useEffect(() => {
     const ownerID = localStorage.getItem("ownerID");
 
-    // Fetch item count
-    Axios
-      .get(`http://localhost:3001/items/count/${ownerID}`)
-      .then((res) => {
-        const count = res.data.count || 0; // Use 0 if count is undefined or null
+    const fetchItemCount = async () => {
+      try {
+        const response = await Axios.get(`http://localhost:3001/items/count/${ownerID}`);
+        const count = response.data.count || 0;
         setItemName(count);
-      })
-      .catch((error) => console.log(error));
+      } catch (error) {
+        console.error("Error fetching item count:", error);
+      }
+    };
 
-    // Fetch supplier count
-    Axios
-      .get("http://localhost:3001/suppliers/total/all")
-      .then((res) => {
-        const count = res.data.count || 0; // Use 0 if count is undefined or null
+    const fetchSupplierCount = async () => {
+      try {
+        const response = await Axios.get("http://localhost:3001/suppliers/total/all");
+        const count = response.data.count || 0;
         setSupplierCount(count);
-      })
-      .catch((error) => console.log(error));
+      } catch (error) {
+        console.error("Error fetching supplier count:", error);
+      }
+    };
 
-    // Fetch menu count
-    Axios
-      .get(`http://localhost:3001/menu/count/${ownerID}`)
-      .then((res) => {
-        const count = res.data.count || 0; // Use 0 if count is undefined or null
+    const fetchMenuCount = async () => {
+      try {
+        const response = await Axios.get(`http://localhost:3001/menu/count/${ownerID}`);
+        const count = response.data.count || 0;
         setMenuCount(count);
-      })
-      .catch((error) => console.log(error));
+      } catch (error) {
+        console.error("Error fetching menu count:", error);
+      }
+    };
 
-    // Fetch employee count
-    Axios
-      .get(`http://localhost:3001/employees/count/${ownerID}`)
-      .then((res) => {
-        const count = res.data.count || 0; // Use 0 if count is undefined or null
+    const fetchEmployeeCount = async () => {
+      try {
+        const response = await Axios.get(`http://localhost:3001/employees/count/${ownerID}`);
+        const count = response.data.count || 0;
         setEmployeeCount(count);
-      })
-      .catch((error) => console.log(error));
+      } catch (error) {
+        console.error("Error fetching employee count:", error);
+      }
+    };
 
-    // Fetch owner's name
-    Axios
-      .get(`http://localhost:3001/owners/${ownerID}`)
-      .then((res) => {
-        const ownerName = res.data.owner.strOwnerName || "Owner";
+    const fetchOwnerName = async () => {
+      try {
+        const response = await Axios.get(`http://localhost:3001/owners/${ownerID}`);
+        const ownerName = response.data.owner.strOwnerName || "Owner";
         setWelcomeMessage(`Welcome back, ${ownerName}!`);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      } catch (error) {
+        console.error("Error fetching owner name:", error);
+      }
+    };
+
+    fetchItemCount();
+    fetchSupplierCount();
+    fetchMenuCount();
+    fetchEmployeeCount();
+    fetchOwnerName();
   }, []);
 
   return (
     <div className="container mt-4">
-      <div className="text-center">
-        <h3 style={{textAlign: "left"}}>{welcomeMessage}</h3>
-      </div>
-      <div className="row mt-4">
-        <div className="col-md-3">
-          <div className="card text-center">
-            <div className="card-body">
+      <h3 className="text-center mb-4">{welcomeMessage}</h3>
+      <div className="row">
+        <div className="col-md-3 mb-4">
+          <div className="card h-100">
+            <div className="card-body text-center">
               <h5 className="card-title">Suppliers</h5>
               <p className="card-text">{supplierCount}</p>
             </div>
           </div>
         </div>
-        <div className="col-md-3">
-          <div className="card text-center">
-            <div className="card-body">
+        <div className="col-md-3 mb-4">
+          <div className="card h-100">
+            <div className="card-body text-center">
               <h5 className="card-title">Items</h5>
               <p className="card-text">{itemName}</p>
             </div>
           </div>
         </div>
-        <div className="col-md-3">
-          <div className="card text-center">
-            <div className="card-body">
+        <div className="col-md-3 mb-4">
+          <div className="card h-100">
+            <div className="card-body text-center">
               <h5 className="card-title">Menu Items</h5>
               <p className="card-text">{menuCount}</p>
             </div>
           </div>
         </div>
-        <div className="col-md-3">
-          <div className="card text-center">
-            <div className="card-body">
+        <div className="col-md-3 mb-4">
+          <div className="card h-100">
+            <div className="card-body text-center">
               <h5 className="card-title">Employees</h5>
               <p className="card-text">{employeeCount}</p>
             </div>

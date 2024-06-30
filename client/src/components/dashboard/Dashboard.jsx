@@ -1,5 +1,10 @@
 import React from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
+import {
+  BiCategory, BiNetworkChart, BiCart, BiBookOpen, BiBarChartAlt2,
+  BiData, BiGroup, BiHourglass, BiUser // Import the BiUser icon
+} from "react-icons/bi";
+import PUP11 from "../../assets/PUP11.png"; // Updated logo image
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -14,107 +19,57 @@ function Dashboard() {
 
   return (
     <div className="container-fluid">
-      <div className="row flex-nowrap">
-        <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0" style={{ backgroundColor: "#550000" }}>
-          <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-            <a
-              href="/"
-              className="d-flex align-items-center pb-3 mb-md-1 mt-md-3 me-md-auto text-white text-decoration-none"
-            >
+      <div className="row">
+        <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0" style={{
+          backgroundColor: '#2e2e2e', // Dark gray background
+          borderRadius: '10px', // Rounded corners
+          boxShadow: '0 8px 16px rgba(0,0,0,0.4)', // Shadow effect
+          padding: '1rem', // Padding for visual appeal
+          margin: '0.5rem', // Margin to ensure it doesn't touch screen edges
+          maxHeight: '100vh', // Limit maximum height to viewport height
+          overflowY: 'auto', // Enable vertical scroll if content exceeds height
+          flexShrink: 0 // Prevent the panel from shrinking when zooming
+        }}>
+          <div className="d-flex flex-column align-items-start px-3 pt-2 text-white">
+            <Link to="/" className="d-flex align-items-center pb-3 mb-3 me-auto text-white text-decoration-none">
+              <img src={PUP11} alt="Logo" className="img-fluid me-3" style={{ height: "4rem" }} /> {/* Larger logo size */}
               <span className="fs-5 fw-bolder d-none d-sm-inline">
-                PUPStols
+                Stall Dashboard {/* Renamed from PUPStols */}
               </span>
-            </a>
-            <ul
-              className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
-              id="menu"
-            >
-              <li>
-                <Link to="/" className="nav-link text-white px-0 align-middle">
-                  <span className="ms-1 d-none d-sm-inline">Dashboard</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/suppliers"
-                  className="nav-link px-0 align-middle text-white"
-                >
-                  <span className="ms-1 d-none d-sm-inline">Suppliers</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/items"
-                  className="nav-link px-0 align-middle text-white"
-                >
-                  <span className="ms-1 d-none d-sm-inline">Items</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/menu" className="nav-link px-0 align-middle text-white">
-                  <span className="ms-1 d-none d-sm-inline">Menu</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/sales-and-transactions"
-                  className="nav-link px-0 align-middle text-white"
-                >
-                  <span className="ms-1 d-none d-sm-inline">
-                    Sales and Transaction
-                  </span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/finances"
-                  className="nav-link px-0 align-middle text-white"
-                >
-                  <span className="ms-1 d-none d-sm-inline">Finance</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/employees"
-                  className="nav-link px-0 align-middle text-white"
-                >
-                  <span className="ms-1 d-none d-sm-inline">Employees</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/rents" className="nav-link px-0 align-middle text-white">
-                  <span className="ms-1 d-none d-sm-inline">Rent History</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/profile"
-                  className="nav-link px-0 align-middle text-white"
-                >
-                  <span className="ms-1 d-none d-sm-inline">Profile</span>
-                </Link>
-              </li>
+            </Link>
+            <div className="mb-3 text-white fw-bold small">Main Menu</div>
+            <ul className="nav nav-pills flex-column mb-auto align-items-start" id="menu">
+              {/* Menu items with hover effect */}
+              {[
+                { to: "/", icon: <BiCategory />, label: "Dashboard" },
+                { to: "/suppliers", icon: <BiNetworkChart />, label: "Suppliers" },
+                { to: "/items", icon: <BiCart />, label: "Items" },
+                { to: "/menu", icon: <BiBookOpen />, label: "Menu Items" },
+                { to: "/sales-and-transactions", icon: <BiBarChartAlt2 />, label: "Sales and Transactions" },
+                { to: "/finances", icon: <BiData />, label: "Finance" },
+                { to: "/employees", icon: <BiGroup />, label: "Employees" },
+                { to: "/rents", icon: <BiHourglass />, label: "Rent History" },
+                { to: "/profile", icon: <BiUser />, label: "Profile" }, // Added Profile menu item
+              ].map((item, index) => (
+                <li key={index} style={{ marginBottom: '0.5rem', borderBottom: '1px solid rgba(255, 255, 255, 0.1)' }}>
+                  <Link to={item.to} className="nav-link text-white px-0 align-middle d-flex align-items-center" style={{ padding: '0.5rem 1rem' }}>
+                    {item.icon}
+                    <span className="ms-1 d-none d-sm-inline">{item.label}</span>
+                  </Link>
+                </li>
+              ))}
             </ul>
-            <div className="mb-4"> {/* Added margin-top here */}
-              <button
-                type="button"
-                className="btn btn-outline-light"
-                onClick={signOut}
-              >
-                Sign Out
-              </button>
+            <div className="mt-2 mb-3 d-flex justify-content-center w-100"> {/* Adjusted margin top */}
+              <button type="button" className="btn btn-outline-light rounded-pill" style={{ width: '100%' }} onClick={signOut}>Sign Out</button>
             </div>
           </div>
         </div>
-        <div className="col p-0 m-0">
-          <div className="p-2 d-flex justify-content-center shadow">
-            <h4>Stall Management System</h4>
-          </div>
+        <div className="col py-3">
           <Outlet />
         </div>
       </div>
     </div>
   );
-};
+}
 
 export default Dashboard;
