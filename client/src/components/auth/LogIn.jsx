@@ -68,7 +68,7 @@ function LogIn() {
               {/* Box around the login heading */}
               <div className="border rounded p-3 mb-4">
                 <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-                  <p className="lead fw-normal mb-0 me-3">Login to your account</p>
+                <h4 className="text-center">Login to your account</h4>
                 </div>
               </div>
 
@@ -113,7 +113,7 @@ function LogIn() {
                   <input className="form-check-input me-2" type="checkbox" value="" />
                   <label className="form-check-label">Remember me</label>
                 </div>
-                <a href="#" className="text-body">
+                <a href="#" className="text-danger">
                   Forgot password?
                 </a>
               </div>
@@ -124,7 +124,7 @@ function LogIn() {
                   Login
                 </button>
                 <p className="small fw-bold mt-2 pt-1 mb-0">
-                  New user? <a href="signup" className="link-danger">Sign Up</a>
+                  New user? <a href="signup" className="link-success">Sign up here</a>
                 </p>
               </div>
             </div>
