@@ -20,7 +20,7 @@ This repository contains the client-side and the server-side code for the PUPSto
 ## Website Snapshots
 
 ### Log in page
-![image](https://github.com/krislette/pup-stalls/assets/143507354/36039eb9-1baf-4631-9fb9-e72eaab87eb1)
+![image](https://github.com/krislette/pup-stalls/assets/143507354/aa6cc189-d51b-422f-a0a3-22bba975d3ee)
 
 ### Sign up page
 ![image](https://github.com/krislette/pup-stalls/assets/143507354/39986853-775d-4871-819e-ad54c8bb2638)
