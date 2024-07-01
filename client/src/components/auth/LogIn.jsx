@@ -31,6 +31,18 @@ function LogIn() {
       .catch((err) => console.error(err));
   };
 
+  const errorMessageStyle = {
+    color: "red",
+    fontSize: "15px",
+    textAlign: "center",
+    marginTop: "20px",
+    marginBottom: "20px",
+    border: "2px solid red",
+    padding: "10px",
+    borderRadius: "5px",
+    backgroundColor: "#ffe6e6",
+  };
+
   return (
     <div
       style={{
@@ -49,8 +61,8 @@ function LogIn() {
           left: 0,
           width: "100%",
           height: "100%",
-          backgroundColor: "rgba(255, 255, 255, 0.3)", // Adjusted opacity for less intense blur
-          backdropFilter: "blur(1px)", // Reduced blur effect
+          backgroundColor: "rgba(255, 255, 255, 0.3)",
+          backdropFilter: "blur(1px)",
         }}
       ></div>
       <div className="container-fluid h-custom" style={{ position: "relative" }}>
@@ -73,15 +85,17 @@ function LogIn() {
               </div>
 
               {/* Error message */}
-              <h1 style={{ color: "red", fontSize: "15px", textAlign: "center", marginTop: "20px" }}>
-                {error && error}
-              </h1>
+              {error && (
+                <div style={errorMessageStyle}>
+                  {error}
+                </div>
+              )}
 
               {/* Box around email and password inputs */}
               <div className="border rounded p-3 mb-4">
                 <div className="form-outline mb-3">
                   <label className="form-label" htmlFor="email">
-                    Email address
+                    Email Address
                   </label>
                   <input
                     type="email"
