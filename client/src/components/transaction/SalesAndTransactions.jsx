@@ -43,7 +43,7 @@ function SalesAndTransactions() {
           <h3>Your Sales and Transactions</h3>
           <Link to="/add-transaction" className="btn btn-dark">Add Transaction</Link>
         </div>
-        <div className="table-responsive">
+        <div className="table-responsive" style={{ maxHeight: '580px', overflowY: 'auto' }}>
           <table className="table table-hover table-striped">
             <thead className="table-dark">
               <tr>

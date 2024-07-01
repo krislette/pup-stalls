@@ -25,7 +25,7 @@ function Suppliers() {
           <h3>PUP-Accredited Supplier List</h3>
           <Link to="/add-supplier" className="btn btn-dark">Add Supplier</Link>
         </div>
-        <div className="table-responsive">
+        <div className="table-responsive" style={{ maxHeight: '580px', overflowY: 'auto' }}>
           <table className="table table-hover table-striped">
             <thead className="table-dark">
               <tr>

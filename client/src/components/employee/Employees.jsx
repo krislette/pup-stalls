@@ -44,7 +44,7 @@ function Employees() {
           <h3>Your Employee List</h3>
           <Link to="/add-employee" className="btn btn-dark">Add Employee</Link>
         </div>
-        <div className="table-responsive">
+        <div className="table-responsive" style={{ maxHeight: '580px', overflowY: 'auto' }}>
           <table className="table table-hover table-striped">
             <thead className="table-dark">
               <tr>

@@ -44,7 +44,7 @@ function Menu() {
           <h3>Your Menu</h3>
           <Link to="/add-menu-item" className="btn btn-dark">Add Menu Item</Link>
         </div>
-        <div className="table-responsive">
+        <div className="table-responsive" style={{ maxHeight: '580px', overflowY: 'auto' }}>
           <table className="table table-hover table-striped">
             <thead className="table-dark">
               <tr>

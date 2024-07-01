@@ -59,8 +59,8 @@ function Dashboard() {
                 </li>
               ))}
             </ul>
-            <div className="mt-2 mb-3 d-flex justify-content-center w-100"> {/* Adjusted margin top */}
-              <button type="button" className="btn btn-outline-light rounded-pill" style={{ width: '100%' }} onClick={signOut}>Sign Out</button>
+            <div className="mt-4 mb-1 d-flex justify-content-center w-100"> {/* Adjusted margin top */}
+              <button type="button" className="btn btn-outline-danger rounded-pill" style={{ width: '100%' }} onClick={signOut}>Sign Out</button>
             </div>
           </div>
         </div>

@@ -44,7 +44,7 @@ function Items() {
           <h3>Your Item List</h3>
           <Link to="/add-item" className="btn btn-dark">Add Item</Link>
         </div>
-        <div className="table-responsive">
+        <div className="table-responsive" style={{ maxHeight: '580px', overflowY: 'auto' }}>
           <table className="table table-hover table-striped">
             <thead className="table-dark">
               <tr>

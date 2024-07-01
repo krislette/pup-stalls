@@ -32,7 +32,7 @@ function RentHistory() {
         <div className="d-flex justify-content-between align-items-center mb-3">
           <h3>Rent History</h3>
         </div>
-        <div className="table-responsive">
+        <div className="table-responsive" style={{ maxHeight: '580px', overflowY: 'auto' }}>
           <table className="table table-hover table-striped">
             <thead className="table-dark">
               <tr>
