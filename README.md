@@ -61,7 +61,7 @@ PUPStols uses a number of open source projects to work properly:
     │ ├──── middlewares         # Middlewares
     │ ├──── models              # Models
     │ ├──── node_modules        # Node Packages
-    │ └──── routes              # Routes
+    │ └──── routers             # Endpoints
     └── README.md
 
 ## Server
