@@ -32,7 +32,7 @@ This repository contains the client-side and the server-side code for the PUPSto
 ![image](https://github.com/krislette/pup-stalls/assets/143507354/c7f039ed-6f3f-473e-b443-3b489c30363b)
 
 ### Read-only page
-![image](https://github.com/krislette/pup-stalls/assets/143507354/27948d16-21b5-42b7-b115-2f70c8d722ac)
+![image](https://github.com/krislette/pup-stalls/assets/143507354/9c457b28-e96d-47f1-ae85-3efa7a577a59)
 
 ### Profile page
 ![image](https://github.com/krislette/pup-stalls/assets/143507354/0308a343-3ae0-4d1c-9c3c-3394dba8c2b1)
