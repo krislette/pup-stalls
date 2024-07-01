@@ -3,14 +3,6 @@
 
 This repository contains the client-side and the server-side code for the PUPStols project. The client handles the presentation layer, user interface, and interaction with end-users. The server is responsible for handling backend logic, database operations, and serving data to the client-side application.
 
-## TODOs
-
-- [ ] Implement authentication middleware.
-- [ ] Refactor `server.js` for better error handling.
-- [ ] Update API documentation in `routes/`.
-- [ ] Optimize database queries in `controllers/`.
-- [ ] Add unit tests for controllers.
-
 ## Features (On Progress)
 
 - Authentication System
@@ -98,6 +90,14 @@ You can also install [nodemon](https://www.npmjs.com/package/nodemon) globally t
 npm install nodemon
 ```
 
-## Additional Notes
+## TODOs
 
-- None so far
+- [x] Optimize database queries in `controllers/`.
+- [x] Clean server-client interaction.
+- [x] Make prettier UI and functional frontend.
+
+## Repository Information
+
+- Project Start Date: June 14, 2024
+- Project Finish Date: June 30, 2024
+- Minor revisions can be done from this point onwards
