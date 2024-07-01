@@ -1,5 +1,5 @@
 # PUPStols
-## _DBMS for the University's Stall Owners_
+### _DBMS for the University's Stall Owners_
 
 This repository contains the client-side and the server-side code for the PUPStols project. The client handles the presentation layer, user interface, and interaction with end-users. The server is responsible for handling backend logic, database operations, and serving data to the client-side application.
 
@@ -16,6 +16,26 @@ This repository contains the client-side and the server-side code for the PUPSto
 > to build a web application for PUP stall owners. 
 > MariaDB will manage data storage, while Node.js will handle 
 > the server-side operations.
+
+## Website Snapshots
+
+### Log in page
+![image](https://github.com/krislette/pup-stalls/assets/143507354/36039eb9-1baf-4631-9fb9-e72eaab87eb1)
+
+### Sign up page
+![image](https://github.com/krislette/pup-stalls/assets/143507354/39986853-775d-4871-819e-ad54c8bb2638)
+
+### Home page
+![image](https://github.com/krislette/pup-stalls/assets/143507354/a1833db3-0159-42de-acbd-e0d6fd35a895)
+
+### CRUD page example
+![image](https://github.com/krislette/pup-stalls/assets/143507354/0eaafe2f-7628-45e3-b93d-58fce82a1ca0)
+
+### Read-only page
+![image](https://github.com/krislette/pup-stalls/assets/143507354/27948d16-21b5-42b7-b115-2f70c8d722ac)
+
+### Profile page
+![image](https://github.com/krislette/pup-stalls/assets/143507354/3598cd25-bc81-47a2-bb4c-c0aac6e1c348)
 
 ## Technologies Used
 
@@ -101,4 +121,3 @@ npm install nodemon
 - Project Start Date: June 14, 2024
 - Project Finish Date: June 30, 2024
 - Minor revisions can be done from this point onwards
-- Project snapshots to be added later
