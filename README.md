@@ -3,7 +3,7 @@
 
 This repository contains the client-side and the server-side code for the PUPStols project. The client handles the presentation layer, user interface, and interaction with end-users. The server is responsible for handling backend logic, database operations, and serving data to the client-side application.
 
-## Features (On Progress)
+## Features
 
 - Authentication System
 - Log in and log out function
@@ -101,3 +101,4 @@ npm install nodemon
 - Project Start Date: June 14, 2024
 - Project Finish Date: June 30, 2024
 - Minor revisions can be done from this point onwards
+- Project snapshots to be added later
