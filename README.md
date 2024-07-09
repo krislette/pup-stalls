@@ -21,7 +21,7 @@
 </div>
 
 <div align="center">
-  <img id="demo" src="https://github.com/krislette/pup-stalls/assets/143507354/3f2a9335-0ade-4455-93c7-a394d6e08e7a" alt="Demo" width="800">
+  <img id="demo" src="https://github.com/krislette/pup-stalls/assets/143507354/3f2a9335-0ade-4455-93c7-a394d6e08e7a" alt="Demo">
 </div>
 
 ## About The Project
