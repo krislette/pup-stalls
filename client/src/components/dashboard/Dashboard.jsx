@@ -21,7 +21,7 @@ function Dashboard() {
     <div className="container-fluid">
       <div className="row">
         <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0" style={{
-          backgroundColor: '#2e2e2e', // Dark gray background
+          backgroundColor: '#800000', // Dark gray background
           borderRadius: '10px', // Rounded corners
           boxShadow: '0 8px 16px rgba(0,0,0,0.4)', // Shadow effect
           padding: '1rem', // Padding for visual appeal
@@ -60,7 +60,7 @@ function Dashboard() {
               ))}
             </ul>
             <div className="mt-4 mb-1 d-flex justify-content-center w-100"> {/* Adjusted margin top */}
-              <button type="button" className="btn btn-outline-danger rounded-pill" style={{ width: '100%' }} onClick={signOut}>Sign Out</button>
+              <button type="button" className="btn btn-outline-light rounded-pill" style={{ width: '100%' }} onClick={signOut}>Sign Out</button>
             </div>
           </div>
         </div>

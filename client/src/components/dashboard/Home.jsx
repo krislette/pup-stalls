@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
+import { Carousel } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";  // eslint-disable-line
+import slide1 from "../../carousel/slide1.jpg";
+import slide2 from "../../carousel/slide2.jpg";
+import slide3 from "../../carousel/slide3.jpg";
+import slide4 from "../../carousel/slide4.jpg";
+import slide5 from "../../carousel/slide5.jpg";
+import slide6 from "../../carousel/slide6.jpg";
+import "../../styles/home.css";
 
 function Home() {
   const [itemName, setItemName] = useState(0);
@@ -7,6 +16,14 @@ function Home() {
   const [menuCount, setMenuCount] = useState(0);
   const [employeeCount, setEmployeeCount] = useState(0);
   const [welcomeMessage, setWelcomeMessage] = useState("Loading...");
+  const [carouselItems] = useState([
+    { src: slide1, alt: "Slide 1" },
+    { src: slide2, alt: "Slide 2" },
+    { src: slide3, alt: "Slide 3" },
+    { src: slide4, alt: "Slide 4" },
+    { src: slide5, alt: "Slide 5" },
+    { src: slide6, alt: "Slide 6" },
+  ]);
 
   useEffect(() => {
     const ownerID = localStorage.getItem("ownerID");
@@ -55,7 +72,7 @@ function Home() {
       try {
         const response = await Axios.get(`http://localhost:3001/owners/${ownerID}`);
         const ownerFullName = response.data.owner.strOwnerName || "Owner";
-        const firstName = ownerFullName.split(' ')[0];
+        const firstName = ownerFullName.split(" ")[0];
         setWelcomeMessage(`Welcome back, ${firstName}!`);
       } catch (error) {
         console.error("Error fetching owner name:", error);
@@ -106,6 +123,17 @@ function Home() {
           </div>
         </div>
       </div>
+      <Carousel className="mt-4 carousel-container">
+        {carouselItems.map((item, index) => (
+          <Carousel.Item key={index}>
+            <img
+              className="d-block w-100 carousel-image"
+              src={item.src}
+              alt={item.alt}
+            />
+          </Carousel.Item>
+        ))}
+      </Carousel>
     </div>
   );
 }

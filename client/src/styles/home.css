@@ -1,0 +1,11 @@
+.carousel-image {
+  height: 430px; /* Set a fixed height */
+  width: 100%; /* Set the width to 100% of the container */
+  object-fit: cover; /* Ensure the images cover the container without distortion */
+}
+
+.carousel-container {
+  box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+  border-radius: 10px; /* Optional: to make the corners rounded */
+  overflow: hidden; /* Ensure the images stay within the rounded corners */
+}
