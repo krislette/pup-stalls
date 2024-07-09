@@ -14,9 +14,9 @@
     <br />
     <a href="#website-snapshots">View Snapshots</a>
     ·
-    <a href="https://github.com/krislette/jeepney-navigation/issues">Report Bug</a>
+    <a href="https://github.com/krislette/pup-stalls/issues">Report Bug</a>
     ·
-    <a href="https://github.com/krislette/jeepney-navigation/issues">Request Feature</a>
+    <a href="https://github.com/krislette/pup-stalls/issues">Request Feature</a>
   </p>
 </div>
 
