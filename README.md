@@ -199,7 +199,7 @@ PUPStols is not yet accessible to the world wide web, as it is yet to be deploye
   </div>
   <div>
     <strong>Acelle</strong>
-    <p>Coded the backend (server) and the frontend (client) using NodeJS, ReactJS, and ExpressJS. Created the carousel feature and the whole website.</p>
+    <p>Coded the backend (server) and the frontend (client) using NodeJS, ReactJS, and ExpressJS. Created the database and tables using `cmd`. Created the carousel feature and the whole website.</p>
   </div>
 </div>
 
