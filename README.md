@@ -20,9 +20,9 @@
   </p>
 </div>
 
-<!-- <div align="center">
-  <img id="demo" src="https://github.com/krislette/jeepney-navigation/assets/143507354/5df67d7a-e259-41dd-9430-09e3ca9a199a" alt="Demo" width="800">
-</div> -->
+<div align="center">
+  <img id="demo" src="https://github.com/krislette/pup-stalls/assets/143507354/3f2a9335-0ade-4455-93c7-a394d6e08e7a" alt="Demo" width="800">
+</div>
 
 ## About The Project
 
