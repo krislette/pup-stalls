@@ -189,7 +189,29 @@ PUPStols is not yet accessible to the world wide web, as it is yet to be deploye
     npm start
     ```
 
-## License
+## Contributors
+**We would like to thank the following contributors for their support and contributions to this project:**
+
+<div style="display: flex; align-items: center;">
+  <div style="margin-right: 20px;">
+    <a href="https://github.com/krislette"><img src="https://avatars.githubusercontent.com/u/143507354?v=4" title="acelle" width="50" height="50"></a>
+  </div>
+  <div>
+    <strong>Acelle</strong>
+    <p>Coded the backend (server) and the frontend (client) using NodeJS, ReactJS, and ExpressJS. Created the carousel feature and the whole website.</p>
+  </div>
+</div>
+
+<div style="display: flex; align-items: center;">
+  <div style="margin-right: 20px;">
+    <a href="https://github.com/LeoTheAlcaraz"><img src="https://avatars.githubusercontent.com/u/115669029?v=4" title="acelle" width="50" height="50"></a>
+  </div>
+  <div>
+    <strong>Leo</strong>
+    <p>Added visual flairs on the frontend by refining the initial look of the website.</p>
+  </div>
+</div>
+
 Distributed under the [MIT](https://choosealicense.com/licenses/mit/) License. See [LICENSE](LICENSE) for more information.
 
 <p align="right">[<a href="#readme-top">Back to top</a>]</p>
