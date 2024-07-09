@@ -50,10 +50,14 @@
     <a href="#getting-started">Getting Started</a>
     <ul>
       <li><a href="#prerequisites">Prerequisites</a></li>
+      <li><a href="#installation">Installation</a></li>
     </ul>
   </li>
   <li>
     <a href="#run">Run</a>
+  </li>
+  <li>
+    <a href="#contributors">Contributors</a>
   </li>
   <li>
     <a href="#license">License</a>
@@ -139,8 +143,7 @@ PUPStols is not yet accessible to the world wide web, as it is yet to be deploye
 
 - Ensure that Node.js and npm are installed on your machine.
 
-<details>
-<summary><b>Show Instructions</b></summary>
+### Installation
 
 1. You can fork this repository, or you can also clone this repository directly on your local machine.
 
@@ -166,8 +169,6 @@ PUPStols is not yet accessible to the world wide web, as it is yet to be deploye
 4. To install the required dependencies for the **client** folder, see the [`package.json`](https://github.com/krislette/pup-stalls/blob/main/client/package.json) for the client-side.
 
 5. To install the required dependencies for the **server** folder, see the [`package.json`](https://github.com/krislette/pup-stalls/blob/main/server/package.json) for the server-side.
-
-</details>
 
 ## Run
 
@@ -211,6 +212,8 @@ PUPStols is not yet accessible to the world wide web, as it is yet to be deploye
     <p>Added visual flairs on the frontend by refining the initial look of the website.</p>
   </div>
 </div>
+
+## License
 
 Distributed under the [MIT](https://choosealicense.com/licenses/mit/) License. See [LICENSE](LICENSE) for more information.
 
