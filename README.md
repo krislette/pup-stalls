@@ -12,16 +12,12 @@
     <a href="#database-design"><strong>Explore the design »</strong></a>
     <br />
     <br />
-    <a href="#demo">View Demo</a>
+    <a href="#website-snapshots">View Snapshots</a>
     ·
     <a href="https://github.com/krislette/jeepney-navigation/issues">Report Bug</a>
     ·
     <a href="https://github.com/krislette/jeepney-navigation/issues">Request Feature</a>
   </p>
-</div>
-
-<div align="center">
-  <img id="demo" src="https://github.com/krislette/pup-stalls/assets/143507354/b4610ce3-7513-4c42-8d41-52bdbe65bd34" alt="Demo">
 </div>
 
 ## About The Project
@@ -101,22 +97,22 @@ To add, provided [here](https://drive.google.com/file/d/1P2I2Az3IUgq-aQCmdNX28bR
 ## Website Snapshots
 
 ### Log in page
-![image](https://github.com/krislette/pup-stalls/assets/143507354/aa6cc189-d51b-422f-a0a3-22bba975d3ee)
+![image](https://github.com/krislette/pup-stalls/assets/143507354/8ef72351-65f5-41b2-8adc-7affde2b4bf2)
 
 ### Sign up page
-![image](https://github.com/krislette/pup-stalls/assets/143507354/39986853-775d-4871-819e-ad54c8bb2638)
+![image](https://github.com/krislette/pup-stalls/assets/143507354/b2ac872c-ec11-4add-b7d0-085966cbf7bd)
 
 ### Home page
-![image](https://github.com/krislette/pup-stalls/assets/143507354/3776f6ed-b9c7-463c-a44e-48d5baeec502)
+![image](https://github.com/krislette/pup-stalls/assets/143507354/f4486f0d-9991-4a2e-8f55-00de31330623)
 
 ### CRUD page example
-![image](https://github.com/krislette/pup-stalls/assets/143507354/c7f039ed-6f3f-473e-b443-3b489c30363b)
+![image](https://github.com/krislette/pup-stalls/assets/143507354/028c0a05-a858-40e1-a9ca-94bb01cdaa62)
 
 ### Read-only page
-![image](https://github.com/krislette/pup-stalls/assets/143507354/9c457b28-e96d-47f1-ae85-3efa7a577a59)
+![image](https://github.com/krislette/pup-stalls/assets/143507354/afb17501-548a-4761-aef1-4aeef2d6be8e)
 
 ### Profile page
-![image](https://github.com/krislette/pup-stalls/assets/143507354/0308a343-3ae0-4d1c-9c3c-3394dba8c2b1)
+![image](https://github.com/krislette/pup-stalls/assets/143507354/e65bff55-70c0-468e-b4fe-e3535ef1b664)
 
 ## Folder Structure
 
