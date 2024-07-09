@@ -2,7 +2,7 @@
 
 <div align="center">
   <a href="https://github.com/krislette/pup-stalls">
-    <img src="client/src/assets/pup-stalls-logo.png" alt="Logo" width="80" height="80">
+    <img src="client/src/assets/pup-stalls-logo.png" alt="Logo" width="100" height="100">
   </a>
 
   <h1 align="center">PUPStols</h1>
