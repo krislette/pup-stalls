@@ -45,16 +45,19 @@
     <a href="#database-design">Database Design</a>
   </li>
   <li>
-    <a href="#application-snapshots">Website Snapshots</a>
+    <a href="#website-snapshots">Website Snapshots</a>
   </li>
   <li>
     <a href="#folder-structure">Folder Structure</a>
   </li>
   <li>
-    <a href="#installation">Getting Started</a>
+    <a href="#getting-started">Getting Started</a>
     <ul>
       <li><a href="#prerequisites">Prerequisites</a></li>
     </ul>
+  </li>
+  <li>
+    <a href="#run">Run</a>
   </li>
   <li>
     <a href="#license">License</a>
@@ -128,7 +131,8 @@ To add, provided [here](https://drive.google.com/file/d/1P2I2Az3IUgq-aQCmdNX28bR
     │ ├──── middlewares         # Middlewares
     │ ├──── models              # Models
     │ ├──── node_modules        # Node Packages
-    │ └──── routers             # Endpoints
+    │ ├──── routers             # Endpoints
+    | └──── server.js           # Main server file
     └── README.md
 
 
@@ -163,30 +167,31 @@ PUPStols is not yet accessible to the world wide web, as it is yet to be deploye
 
 3. Configure the database connection in `server/config/db.js` as per your MariaDB/MySQL/Any RDBMS database environment.
 
-4. To install the required dependencies for the **client** folder, see [`package.json`](https://github.com/krislette/pup-stalls/blob/main/client/package.json)
+4. To install the required dependencies for the **client** folder, see the [`package.json`](https://github.com/krislette/pup-stalls/blob/main/client/package.json) for the client-side.
 
-5. To install the required dependencies for the **server** folder, see [`package.json`](https://github.com/krislette/pup-stalls/blob/main/server/package.json)
+5. To install the required dependencies for the **server** folder, see the [`package.json`](https://github.com/krislette/pup-stalls/blob/main/server/package.json) for the server-side.
 
+</details>
 
-4. Run the server on `/server`.
+## Run
+
+- Run the server on `/server`.
 
     ```bash
     node server.js
     ```
 
-5. With nodemon, you can run the server using,
+- With `nodemon`, you can run the server using,
 
     ```bash
     npm run server
     ```
 
-6. Run the client on `/client`.
+- Run the client on `/client`.
 
     ```bash
     npm start
     ```
-
-</details>
 
 ## License
 Distributed under the [MIT](https://choosealicense.com/licenses/mit/) License. See [LICENSE](LICENSE) for more information.
